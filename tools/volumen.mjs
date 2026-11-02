@@ -16,7 +16,7 @@ const lista = (n) => {
   return JSON.parse(html.slice(i + `const ${n}=`.length, j + 1).replace(/×/g, "x"));
 };
 
-const DIAS = { PUSH: "Lun", PULL: "Mar", LEGS: "Mié", PUSH_B: "Jue", PULL_B: "Vie" };
+const DIAS = { PIERNAS_A: "Lun", EMPUJE: "Mar", TIRON: "Mié", PIERNAS_B: "Jue", TORSO: "Vie" };
 
 /* Qué músculo trabaja cada ejercicio. Lo de 0,5 es carga indirecta real:
    el press carga tríceps aunque no sea un ejercicio de tríceps. */
@@ -66,19 +66,26 @@ const M = {
   crunchpolea: { core: 1 },
 };
 
-/* Objetivos para Lucas: prioridad tren superior, piernas en mantenimiento
-   mientras juegue al fútbol. Rangos de la meta-regresión de volumen.
-   Ojo: los números de arriba son fraccionales, así que los objetivos de bíceps y
-   tríceps son altos (10-14) aunque las series DIRECTAS sean solo 3 o 4: el resto
-   se lo comen los jalones y los press.
-   Piernas: desde octubre 2026 hay una sola práctica por semana en vez de dos, así
-   que la cancha aporta menos y los rangos de cuádriceps y glúteo subieron.
-   Isquio cadera 5 es el piso: sumado al nórdico del lunes son 8 series de isquio. */
+/* Objetivos para Lucas, noviembre 2026: SIN fútbol.
+   Hasta octubre jugaba, y los rangos de pierna estaban deliberadamente bajos
+   ("piernas en mantenimiento mientras juegue al fútbol"): la cancha daba el
+   estímulo y el gimnasio solo tenía que no estorbar. Al terminar el fútbol ese
+   razonamiento se venció y quedaron unas piernas en mantenimiento sin nada que
+   las mantuviera, así que los cinco rangos de pierna subieron a valores de
+   crecimiento real. Los de torso quedaron igual.
+   Rangos de la meta-regresión de volumen.
+   Ojo: los números son fraccionales, así que los objetivos de bíceps y tríceps
+   son altos (10-14) aunque las series DIRECTAS sean solo 3 o 4: el resto se lo
+   comen los jalones y los press.
+   Con 3 días de torso en vez de 4, varios grupos de arriba quedan en el PISO de
+   su rango y no en el medio. Es a conciencia: es lo que cuesta darle dos días a
+   la pierna sin agregar un sexto día de gimnasio. Si alguno cae abajo del piso,
+   el script avisa y hay que sacarle series a otro lado. */
 const OBJ = {
   pecho: [12, 16], espalda: [14, 18], "delt lat": [12, 18], "delt post": [8, 12],
   "delt ant": [6, 8], triceps: [10, 14], biceps: [10, 14], trapecio: [4, 6],
-  cuadriceps: [10, 14], "isquio cadera": [5, 8], "isquio rodilla": [2, 4],
-  gluteo: [4, 8], gemelos: [6, 8], aductores: [4, 8], core: [4, 6],
+  cuadriceps: [14, 18], "isquio cadera": [8, 12], "isquio rodilla": [4, 7],
+  gluteo: [8, 12], gemelos: [8, 12], aductores: [4, 10], core: [4, 6],
 };
 /* "isquio rodilla" queda en rojo a propósito y no le bajo el objetivo: el nórdico
    era lo único que doblaba la rodilla contra resistencia y Lucas lo sacó. El rumano

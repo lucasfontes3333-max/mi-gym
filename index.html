@@ -371,7 +371,7 @@ inclinado:{name:"Press inclinado con mancuernas",db:[1],grip:"punta",hl:["torso"
   pos:"Banco a 30–45°, espalda y cabeza apoyadas, pies en el piso. Mancuernas arriba del pecho con las palmas hacia adelante.",
   mov:"Bajá las mancuernas hacia los costados del pecho hasta sentir el estiramiento. Empujá hacia arriba acercándolas sin chocarlas.",
   err:"Banco muy parado (se vuelve ejercicio de hombro), arquear mucho la zona lumbar o bajar muy poco."},
-aperturas:{name:"Aperturas en banco plano",db:[1,2],grip:"vertical",hl:["ua1","ua2"],view:"Vista desde arriba",pre:["3×12","7 kg c/u"],
+aperturas:{name:"Aperturas en banco plano",pre:["3×12","8 kg c/u"],db:[1,2],grip:"vertical",hl:["ua1","ua2"],view:"Vista desde arriba",pre:["3×12","7 kg c/u"],
   equip:()=>`<rect x="87" y="26" width="26" height="80" rx="4" fill="var(--equip)" opacity=".55"/>`,
   ph:[["Abrí en arco, codos fijos (2 s)",2000],["Cerrá como un abrazo (1 s)",1100]],
   A:{h:[100,30],n:[100,43],p:[100,95],s1:[86,46],s2:[114,46],k1:[91,122],a1:[89,150],k2:[109,122],a2:[111,150],e1:[80,52],w1:[94,50],e2:[120,52],w2:[106,50]},
@@ -401,7 +401,7 @@ pushdown:{name:"Extensión de tríceps en polea con barra recta",plate:2,hl:["fa
   pos:"De frente a la polea alta, barra recta con palmas hacia abajo, codos pegados a los costados, torso apenas inclinado.",
   mov:"Empujá la barra hacia abajo hasta estirar los brazos por completo y apretá el tríceps un segundo. Volvé hasta que el antebrazo quede más o menos paralelo al piso.",
   err:"Mover los codos hacia adelante y atrás o echar el peso del cuerpo encima de la barra."},
-overhead:{name:"Extensión de tríceps por detrás de la cabeza",hl:["fa1"],cable:[[40,66,1]],equip:()=>EQ.tower(34)+EQ.pulley(40,66),view:"De espaldas a la polea",pre:["3×12","placa 3"],
+overhead:{name:"Extensión de tríceps por detrás de la cabeza",pre:["3×12","placa 3"],hl:["fa1"],cable:[[40,66,1]],equip:()=>EQ.tower(34)+EQ.pulley(40,66),view:"De espaldas a la polea",pre:["3×12","placa 3"],
   ph:[["Estirá los brazos (1 s)",1000],["Doblá detrás de la cabeza (2 s)",2100]],
   A:{h:[112,46],n:[106,58],p:[92,98],k1:[112,124],a1:[120,150],k2:[82,124],a2:[74,150],e1:[122,38],w1:[100,34]},
   B:{h:[112,46],n:[106,58],p:[92,98],k1:[112,124],a1:[120,150],k2:[82,124],a2:[74,150],e1:[122,38],w1:[146,26]},
@@ -438,14 +438,14 @@ facepull:{name:"Face pull",hl:["ua1"],cable:[[182,42,1]],equip:()=>EQ.tower(190)
   pos:"Polea a la altura de la cara con la cuerda. Agarre con los pulgares hacia atrás y un paso atrás para que haya tensión.",
   mov:"Tirá la cuerda hacia la frente separando las manos, con los codos altos y abiertos. Apretá un segundo la parte de atrás del hombro y volvé.",
   err:"Bajar los codos (se vuelve un remo), usar demasiado peso o echar el cuerpo hacia atrás."},
-curlinc:{name:"Curl en banco inclinado",db:[1],grip:"punta",hl:["ua1"],pre:["3×10","7 kg c/u"],equip:()=>EQ.bench(92,136,115)+EQ.back(98,114,70,60),
+curlinc:{name:"Curl en banco inclinado",pre:["3×10","7 kg c/u"],db:[1],grip:"punta",hl:["ua1"],pre:["3×10","7 kg c/u"],equip:()=>EQ.bench(92,136,115)+EQ.back(98,114,70,60),
   ph:[["Subí sin mover el codo (1 s)",1000],["Bajá hasta estirar (2–3 s)",2300]],
   A:{...INCL,e1:[84,94],w1:[84,117]},B:{...INCL,e1:[84,94],w1:[101,79]},
   cue:"El brazo cuelga detrás del cuerpo: ahí está el estiramiento.",
   pos:"Banco a unos 45°, espalda y cabeza apoyadas. Brazos colgando rectos hacia el piso con las palmas hacia adelante.",
   mov:"Subí las mancuernas sin llevar los codos hacia adelante. Bajá lento hasta estirar el brazo por completo: ese estiramiento es lo que lo hace tan efectivo.",
   err:"Adelantar los codos al subir, despegar los hombros del banco o usar el mismo peso que en el curl sentado (se usa menos)."},
-predicador:{name:"Curl predicador",db:[1],grip:"punta",hl:["ua1"],pre:["3×10","6 kg"],equip:()=>EQ.back(114,62,140,128)+`<line x1="140" y1="128" x2="140" y2="150" stroke="var(--equip)" stroke-width="4"/>`,
+predicador:{name:"Curl predicador",pre:["3×10","8 kg"],db:[1],grip:"punta",hl:["ua1"],pre:["3×10","6 kg"],equip:()=>EQ.back(114,62,140,128)+`<line x1="140" y1="128" x2="140" y2="150" stroke="var(--equip)" stroke-width="4"/>`,
   ph:[["Subí hasta el hombro (1 s)",1000],["Bajá sin bloquear el codo (2 s)",2200]],
   A:{h:[102,46],n:[108,58],p:[98,100],k1:[100,125],a1:[98,150],e1:[126,86],w1:[146,110]},B:{h:[102,46],n:[108,58],p:[98,100],k1:[100,125],a1:[98,150],e1:[126,86],w1:[118,64]},
   cue:"La parte de atrás del brazo siempre apoyada.",
@@ -473,7 +473,7 @@ cruce:{name:"Cruce de poleas",hl:["ua1","ua2","torso"],cable:[[18,18,1],[182,18,
   pos:"Poleas arriba, un paso adelante entre las dos torres con un pie adelante. Torso levemente inclinado y codos apenas flexionados.",
   mov:"Llevá las manos en arco hacia abajo y al frente hasta juntarlas a la altura del ombligo, apretando el pecho un segundo. Volvé abriendo lento hasta sentir el estiramiento.",
   err:"Doblar y estirar los codos, tirar con los brazos en vez de con el pecho o dejar que el peso te lleve hacia atrás."},
-arnold:{name:"Press Arnold",db:[1,2],hl:["ua1","ua2"],equip:()=>`<rect x="88" y="58" width="24" height="54" rx="3" fill="var(--equip)" opacity=".5"/>`+EQ.seatF(),rest:120,pre:["3×10","7 kg c/u"],
+arnold:{name:"Press Arnold",pre:["3×10","8 kg c/u"],db:[1,2],hl:["ua1","ua2"],equip:()=>`<rect x="88" y="58" width="24" height="54" rx="3" fill="var(--equip)" opacity=".5"/>`+EQ.seatF(),rest:120,pre:["3×10","7 kg c/u"],
   ph:[["Girá las palmas y empujá (1,5 s)",1500],["Bajá girando (2 s)",2000]],
   A:{...SEATF,e1:[92,82],w1:[94,58],e2:[108,82],w2:[106,58]},B:{...SEATF,e1:[80,44],w1:[88,22],e2:[120,44],w2:[112,22]},
   cue:"Variante del press de hombros que también trabaja la parte de adelante.",
@@ -487,7 +487,7 @@ latpolea:{name:"Elevación lateral en polea",hl:["ua2"],cable:[[18,140,2]],equip
   pos:"De costado a la polea baja, agarrando el cable con la mano más lejana; el cable pasa por delante del cuerpo. Codo apenas flexionado.",
   mov:"Subí el brazo hacia el costado hasta la altura del hombro, guiando con el codo. Bajá lento hasta que la mano quede frente a la cadera.",
   err:"Inclinar el cuerpo para ayudarte, subir más arriba del hombro o encoger el cuello."},
-cuerda:{name:"Extensión de tríceps con cuerda",plate:2,hl:["fa1"],pre:["3×12","placa 3"],cable:[[150,12,1]],equip:()=>EQ.tower(158)+EQ.pulley(150,12),
+cuerda:{name:"Extensión de tríceps con cuerda",pre:["3×12","placa 3"],plate:2,hl:["fa1"],pre:["3×12","placa 3"],cable:[[150,12,1]],equip:()=>EQ.tower(158)+EQ.pulley(150,12),
   ph:[["Empujá y abrí la cuerda (1 s)",1000],["Volvé controlado (2 s)",2000]],
   A:{h:[104,40],n:[102,52],p:[98,95],k1:[100,122],a1:[98,150],e1:[104,80],w1:[122,66]},B:{h:[104,40],n:[102,52],p:[98,95],k1:[100,122],a1:[98,150],e1:[104,80],w1:[110,104]},
   cue:"Abajo de todo separá las puntas de la cuerda hacia afuera.",
@@ -512,7 +512,7 @@ remo1:{name:"Remo con mancuerna a una mano",db:[1],hl:["ua1","torso"],equip:()=>
   pos:"Rodilla y mano del mismo lado apoyadas en el banco, el otro pie firme en el piso. Espalda paralela al piso y brazo colgando con la mancuerna.",
   mov:"Llevá el codo hacia atrás y arriba, pegado al cuerpo, hasta que la mancuerna llegue a la cadera. Bajá hasta estirar el brazo y sentir el estiramiento en la espalda.",
   err:"Girar el torso para subir más, encorvar la espalda o tirar con el bíceps."},
-jalon1:{name:"Jalón a una mano en polea",hl:["ua1","torso"],pre:["3×12 por brazo","placa 3"],cable:[[150,8,1]],equip:()=>EQ.tower(158)+EQ.pulley(150,8),
+jalon1:{name:"Jalón a una mano en polea",pre:["3×12 por brazo","placa 3"],hl:["ua1","torso"],pre:["3×12 por brazo","placa 3"],cable:[[150,8,1]],equip:()=>EQ.tower(158)+EQ.pulley(150,8),
   ph:[["Llevá el codo a la cintura (1 s)",1000],["Subí estirando (2 s)",2000]],
   A:{h:[100,64],n:[100,76],p:[100,114],k1:[104,148],a1:[74,150],e1:[116,48],w1:[128,26]},
   B:{h:[100,64],n:[100,76],p:[100,114],k1:[104,148],a1:[74,150],e1:[104,102],w1:[114,82]},
@@ -534,7 +534,7 @@ curlpolea:{name:"Curl en polea baja",plate:2,hl:["ua1"],cable:[[164,140,1]],equi
   pos:"De frente a la polea baja con barra recta, palmas hacia arriba, codos pegados al cuerpo y un paso atrás.",
   mov:"Subí la barra hasta la altura de los hombros apretando el bíceps. Bajá lento hasta estirar los brazos.",
   err:"Balancear el cuerpo, adelantar los codos o soltar el peso de golpe."},
-concentrado:{name:"Curl concentrado",db:[1],grip:"punta",hl:["ua1"],pre:["3×10 por brazo","7 kg"],equip:()=>EQ.bench(70,140,112),
+concentrado:{name:"Curl concentrado",pre:["3×12 por brazo","7 kg"],db:[1],grip:"punta",hl:["ua1"],pre:["3×10 por brazo","7 kg"],equip:()=>EQ.bench(70,140,112),
   ph:[["Subí apretando (1 s)",1000],["Bajá hasta estirar (2 s)",2200]],
   A:{h:[112,62],n:[106,74],p:[90,108],k1:[126,110],a1:[126,150],e1:[118,108],w1:[120,132]},
   B:{h:[112,62],n:[106,74],p:[90,108],k1:[126,110],a1:[126,150],e1:[118,108],w1:[112,86]},
@@ -542,14 +542,14 @@ concentrado:{name:"Curl concentrado",db:[1],grip:"punta",hl:["ua1"],pre:["3×10 
   pos:"Sentado en la punta del banco con las piernas abiertas. Apoyá la parte de atrás del brazo contra el interior del muslo, brazo estirado hacia el piso.",
   mov:"Subí la mancuerna hacia el hombro sin mover el brazo y apretá un segundo arriba. Bajá lento hasta estirar del todo.",
   err:"Despegar el codo del muslo, ayudarte con el hombro o hacer medio recorrido."},
-martillocuerda:{name:"Martillo con cuerda en polea",plate:2,hl:["fa1","ua1"],pre:["3×12","placa 3"],cable:[[164,140,1]],equip:()=>EQ.tower(172)+EQ.pulley(164,140),
+martillocuerda:{name:"Martillo con cuerda en polea",pre:["3×12","placa 3"],plate:2,hl:["fa1","ua1"],pre:["3×12","placa 3"],cable:[[164,140,1]],equip:()=>EQ.tower(172)+EQ.pulley(164,140),
   ph:[["Subí con palmas enfrentadas (1 s)",1000],["Bajá lento (2 s)",2000]],
   A:{...STAND,e1:[102,76],w1:[106,100]},B:{...STAND,e1:[102,76],w1:[118,60]},
   cue:"Igual que el martillo, con tensión constante de la polea.",
   pos:"De frente a la polea baja con la cuerda, una punta en cada mano y palmas enfrentadas. Codos pegados al cuerpo.",
   mov:"Subí la cuerda hacia los hombros sin girar las muñecas. Bajá lento hasta estirar los brazos.",
   err:"Balancear el torso o adelantar los codos."},
-crunchpolea:{name:"Crunch en polea de rodillas",plate:2,hl:["torso"],cable:[[126,8,1]],equip:()=>EQ.pulley(126,8),
+crunchpolea:{name:"Crunch en polea de rodillas",pre:["3×15","placa 4"],plate:2,hl:["torso"],cable:[[126,8,1]],equip:()=>EQ.pulley(126,8),
   ph:[["Enrollá el torso hacia abajo (1 s)",1000],["Subí controlado (2 s)",2000]],
   A:{h:[110,50],n:[108,62],p:[106,105],k1:[108,146],a1:[76,148],e1:[120,70],w1:[116,52]},
   B:{h:[150,98],n:[142,88],p:[106,105],k1:[108,146],a1:[76,148],e1:[136,108],w1:[146,104]},
@@ -629,7 +629,7 @@ stepup:{name:"Subida explosiva al banco",db:[1],hl:["th1"],rest:90,
   pos:"Un pie entero apoyado arriba del banco, el otro en el piso, mancuernas colgando a los costados y torso erguido.",
   mov:"Subí lo más rápido que puedas empujando solo con la pierna que está arriba, hasta quedar parado en el banco con la otra rodilla alta. Bajá lento y apoyá suave. Terminás las repeticiones de una pierna y después cambiás.",
   err:"Impulsarte con el pie de abajo, tirar el torso adelante o bajar de golpe."},
-jumpsquat:{name:"Sentadilla con salto",hl:["th1"],rest:120,
+jumpsquat:{name:"Sentadilla con salto",pre:["3×4","sin peso"],hl:["th1"],rest:120,
   ph:[["Bajá a media sentadilla (1 s)",1000],["Saltá lo más alto que puedas",900]],
   A:{h:[100,58],n:[98,70],p:[92,108],k1:[114,122],a1:[102,148],t1:[114,150],e1:[90,88],w1:[76,100]},
   B:{h:[100,30],n:[100,42],p:[100,80],k1:[100,107],a1:[100,135],t1:[106,146],e1:[114,32],w1:[126,18]},
@@ -690,39 +690,52 @@ plancha:{name:"Plancha de abdomen",pre:["2×45 seg",""],hl:["torso"],
    Donde subir de peso es un salto enorme (polea de placa 1 a placa 2 es el doble)
    igual se progresa igual: primero se suman repeticiones de más al número fijo y
    recién cuando salen todas limpias se sube la placa.
-   Las series por sesión quedan entre 14 y 17. Verificable con tools/volumen.mjs. */
-/* El cruce de poleas está el jueves y no el lunes a propósito. Antes el lunes tenía
-   10 series de pecho juntas y el jueves 3: el pecho crece mejor repartido en dos
-   días parejos (7 y 6) que amontonado en uno. Los gemelos hicieron el camino
-   inverso, y de paso dejaron de caer dos días seguidos (eran miércoles y jueves). */
-/* El curl femoral va el lunes y no el miércoles por dos motivos: el miércoles ya
-   tiene 20 series y es el día que Lucas aprobó tal cual, y el lunes es el día más
-   lejos del partido del sábado. Es trabajo de pierna en un día de empuje, pero el
-   lunes ya tenía gemelos, así que no rompe nada. */
-const PUSH=[["banca","4×8","15 kg por lado"],["inclinado","3×8","10 kg c/u"],["laterales","4×12","5 kg c/u"],["pushdown","3×10","placa 4"],["gemelos","3×15","10 kg c/u"],["femoral","3×12","6 kg"]];
-const PULL=[["jalon","4×10","placa 6"],["remo","4×10","placa 9"],["facepull","3×15","placa 2"],["martillo","3×10","7 kg c/u"],["crunchpolea","3×15","placa 4"]];
-/* El abdomen va acá porque el jueves era el día más corto. Son dos ejercicios
-   distintos en la semana (crunch con peso el martes, elevaciones el jueves) y los
-   dos se pueden hacer más difíciles con el tiempo, que es lo que la plancha sola
-   no permitía: una vez que aguantás el minuto, la plancha ya no te da nada más. */
-const PUSH_B=[["pressplano","3×10","10 kg c/u"],["hombro","3×10","9 kg c/u"],["laterales","4×12","5 kg c/u"],["frances","3×10","5 kg c/u"],["cruce","3×12","placa 2"],["elevaciones","3×12",""]];
-/* El jalón de agarre cerrado salió de la rutina y del listado: en tu gimnasio solo
-   está la barra larga. El viernes lleva pull over en vez de un segundo jalón para
-   no repetir el mismo movimiento dos veces en la semana. */
-const PULL_B=[["pullover","3×10","placa 5"],["remo1","3×10 por brazo","12 kg"],["latpolea","3×12 por brazo","placa 1"],["cruceinv","3×15","placa 1"],["curlpolea","3×12","placa 3"],["encogimientos","3×12","12 kg c/u"]];
-/* El rumano se lleva 5 series porque los isquios desde la cadera eran el agujero
-   grande de la semana (había 3) y son el músculo que más se lesiona corriendo.
-   Sentadilla con salto y goblet bajan a 3 para no pasarse de cuádriceps. */
-const LEGS=[["stepup","4×4 por pierna","8 kg c/u"],["jumpsquat","3×4","sin peso"],["goblet","3×8","12 kg"],["rumanobarra","5×8","10 kg por lado"],["zancadas","2×10 por pierna","6 kg c/u"],["gemelo1","3×15","10 kg"]];
+   Los cinco días quedan en 20 series exactas. Verificable con tools/volumen.mjs. */
+
+/* ===== Por qué esta rutina y no la anterior (noviembre 2026) =====
+   Hasta octubre Lucas jugaba al fútbol, y por eso el plan tenía UN día de piernas:
+   la cancha ya le daba el estímulo y el gimnasio solo tenía que no estorbar. Eso
+   estaba escrito tal cual en los objetivos de tools/volumen.mjs ("piernas en
+   mantenimiento mientras juegue al fútbol").
+   Se terminó el fútbol y ese razonamiento se venció: quedaron unas piernas en
+   mantenimiento sin nada que las mantuviera, mientras todo el tren superior
+   seguía entrenándose dos veces por semana.
+   Arreglarlo metiendo más series el miércoles no servía: ese día ya estaba en 20
+   series, que es el techo de una sesión de dos horas. Las piernas necesitaban un
+   segundo día, así que la semana pasó de 4 torso + 1 pierna a 3 torso + 2 pierna.
+   Lunes y jueves están separados por tres días a propósito: es la distancia justa
+   para entrenar la pierna dos veces sin llegar dolorido a la segunda.
+   Lo que se paga: el torso baja de 91,5 a 86,5 series fraccionales (un 5%) y
+   varios grupos quedan en el piso de su rango en vez de en el medio. Es una
+   decisión tomada a conciencia, no un descuido: la pierna es la masa muscular más
+   grande y es la que más mueve la aguja en una recomposición. */
+
+/* Lunes, pierna de rodilla: la sentadilla primero, con la pierna fresca. El curl
+   femoral y los gemelos cierran. */
+const PIERNAS_A=[["goblet","4×8","12 kg"],["stepup","3×6 por pierna","8 kg c/u"],["zancadas","3×10 por pierna","6 kg c/u"],["rumano","3×10","10 kg c/u"],["femoral","3×12","6 kg"],["gemelos","4×15","10 kg c/u"]];
+/* Martes, empuje. El cruce de poleas se mudó acá desde el jueves viejo: con tres
+   días de torso, el pecho tiene que entrar entero en dos de ellos. */
+const EMPUJE=[["banca","4×8","15 kg por lado"],["inclinado","3×8","10 kg c/u"],["cruce","3×12","placa 2"],["laterales","4×12","5 kg c/u"],["pushdown","3×10","placa 4"],["frances","3×10","5 kg c/u"]];
+/* Miércoles, tirón. Lleva los encogimientos porque el trapecio se quedaba sin día
+   al desaparecer el viernes de tirón. */
+const TIRON=[["jalon","4×10","placa 6"],["remo","4×10","placa 9"],["pullover","3×10","placa 5"],["facepull","3×15","placa 2"],["martillo","3×10","7 kg c/u"],["encogimientos","3×12","12 kg c/u"]];
+/* Jueves, pierna de cadera. El rumano con barra se lleva 5 series: los isquios
+   desde la cadera eran el agujero más grande de la semana vieja (tenían 5 y ahora
+   tienen 8) y son el músculo que más se lesiona corriendo. */
+const PIERNAS_B=[["rumanobarra","5×8","10 kg por lado"],["sentadillamanc","3×10","12 kg c/u"],["zancadaestatica","2×10 por pierna","6 kg c/u"],["femoral","2×12","6 kg"],["gemelo1","4×15","10 kg"],["elevaciones","4×12",""]];
+/* Viernes, repaso del torso: cubre lo que quedó corto entre martes y miércoles.
+   Es el único día con siete ejercicios porque tiene que tocar pecho, espalda,
+   las tres cabezas del hombro y bíceps sin pasarse de 20 series. */
+const TORSO=[["pressplano","3×10","10 kg c/u"],["remo1","3×10 por brazo","12 kg"],["hombro","2×10","9 kg c/u"],["laterales","3×12","5 kg c/u"],["latpolea","4×12 por brazo","placa 1"],["cruceinv","3×15","placa 1"],["curlpolea","2×12","placa 3"]];
 const DAYS=[
 /* Nada de cinta en ningún día: Lucas camina 10.000 pasos todos los días y algunos
    más. Eso ya es el cardio de la semana y sumarle cinta solo le come tiempo y
    recuperación. Las notas lo dicen para que no quede la duda de si falta algo. */
- {id:"lun",short:"Lun",tag:"Empuje A",name:"Lunes",focus:"Pecho, hombros, tríceps y gemelos",note:"Arrancá por la banca, que es lo más pesado del día. No sumes cinta: con tus 10.000 pasos el cardio ya está hecho.",list:PUSH},
- {id:"mar",short:"Mar",tag:"Tirón A",name:"Martes",focus:"Espalda, bíceps y abdomen",note:"Hoy hay práctica. Todo lo de hoy es tren superior, así que no le compite a la cancha.",list:PULL},
- {id:"mie",short:"Mié",tag:"Piernas",name:"Miércoles",focus:"Piernas: potencia y fuerza",note:"Los dos primeros son de potencia: poco peso, rápido y descansando bien entre series. Son los que te sirven en la cancha, así que van primero, con la pierna fresca.",list:LEGS},
- {id:"jue",short:"Jue",tag:"Empuje B",name:"Jueves",focus:"Pecho, hombros, tríceps y abdomen (variante B)",note:"Es el lunes pero con mancuernas: mismo músculo, otro ángulo. Las elevaciones van al final y no necesitás nada para hacerlas.",list:PUSH_B},
- {id:"vie",short:"Vie",tag:"Tirón B",name:"Viernes",focus:"Espalda, bíceps y trapecio (variante B)",note:"Dejá una repetición en el tanque y nada de piernas, que mañana hay partido.",list:PULL_B}
+ {id:"lun",short:"Lun",tag:"Piernas A",name:"Lunes",focus:"Cuádriceps, glúteo y gemelos",note:"Arrancá por la sentadilla, que es lo más pesado del día. Las piernas vuelven el jueves, así que hoy no hace falta dejar todo: terminá cada serie con una repetición en el tanque.",list:PIERNAS_A},
+ {id:"mar",short:"Mar",tag:"Empuje",name:"Martes",focus:"Pecho, hombros y tríceps",note:"Todo tren superior, con la pierna descansando de ayer. La banca va primera porque es donde más peso movés.",list:EMPUJE},
+ {id:"mie",short:"Mié",tag:"Tirón",name:"Miércoles",focus:"Espalda, bíceps y trapecio",note:"Día de tirar. En el jalón y el remo llevá el codo atrás y apretá la espalda al final del recorrido: si tirás solo con el brazo, trabaja el bíceps en vez de la espalda.",list:TIRON},
+ {id:"jue",short:"Jue",tag:"Piernas B",name:"Jueves",focus:"Isquios, glúteo y abdomen",note:"El rumano es el ejercicio más importante de la semana para la parte de atrás de la pierna. Bajá hasta donde la espalda se mantenga derecha, no más: no se trata de llegar al piso.",list:PIERNAS_B},
+ {id:"vie",short:"Vie",tag:"Torso",name:"Viernes",focus:"Pecho, espalda y hombros (repaso)",note:"Es el día de repaso: toca todo lo del torso una vez más, con menos peso y más repeticiones. Si llegás cansado de la semana, este es el día para aflojar.",list:TORSO}
 ];
 
 /* Alternativas: si la máquina está ocupada, con qué lo reemplazás.
@@ -736,7 +749,10 @@ const ALT={
   laterales:[["latpolea","En polea, tensión constante"],["arnold","Si querés algo más pesado"]],
   pushdown:[["cuerda","Misma polea, otro agarre"],["frances","Con mancuernas, sin polea"],["overhead","Trabaja la cabeza larga"]],
   overhead:[["frances","Con mancuernas, sin polea"],["cuerda","Misma zona, en polea"]],
-  jalon:[["remo","Si el jalón está ocupado"],["pullover","Misma zona, de pie"]],
+  /* jalon1 entró acá en noviembre: el miércoles tiene remo y pull over en la
+     misma sesión, así que las dos alternativas viejas quedaban ocupadas y el
+     jalón se quedaba sin ninguna salida si la barra estaba agarrada. */
+  jalon:[["remo","Si el jalón está ocupado"],["pullover","Misma zona, de pie"],["jalon1","A una mano, si la barra larga está ocupada"]],
   remo:[["remo1","Con mancuerna, un lado por vez"],["jalon","Más dorsal, menos espalda media"]],
   pullover:[["jalon","Misma zona, más simple"],["remo1","Con mancuerna, sin polea"]],
   facepull:[["cruceinv","Misma zona del hombro de atrás"],["remo","Si las poleas están ocupadas"]],
@@ -746,7 +762,7 @@ const ALT={
   pressplano:[["banca","Con barra, más peso total"],["inclinado","Más parte alta del pecho"]],
   cruce:[["aperturas","Con mancuernas, sin polea"],["pressplano","Si querés algo más pesado"]],
   arnold:[["hombro","Más simple, más peso"],["laterales","Más liviano, solo el costado"]],
-  latpolea:[["laterales","Con mancuernas, sin polea"]],
+  latpolea:[["laterales","Con mancuernas, sin polea"],["arnold","Press con rotación, más peso"]],
   cuerda:[["pushdown","Barra recta, misma polea"],["frances","Con mancuernas, sin polea"]],
   frances:[["overhead","En polea, más cómodo para el codo"],["cuerda","Misma zona, en polea"]],
   remo1:[["remo","En polea, los dos brazos"],["jalon","Si preferís jalón"]],
@@ -762,7 +778,13 @@ const ALT={
   gemelos:[["gemelo1","Una pierna por vez, más carga"]],
   gemelo1:[["gemelos","Las dos piernas juntas, más simple"]],
   femoral:[["rumanobarra","Mismo músculo, desde la cadera"],["rumano","Con mancuernas, de pie"]],
-  stepup:[["zancadaestatica","Sin impulso, más controlado"]],
+  stepup:[["zancadaestatica","Sin impulso, más controlado"],["sentadillamanc","Las dos piernas a la vez"]],
+  /* Los tres que entraron a la rutina en noviembre necesitaban su propia lista:
+     sin esto el botón "Cambiar" no aparecía y te quedabas sin salida si la
+     mancuerna o la barra estaban ocupadas. */
+  rumano:[["rumanobarra","Con barra, más peso total"],["femoral","Desde la rodilla, acostado"]],
+  sentadillamanc:[["goblet","Una sola mancuerna, contra el pecho"],["zancadaestatica","Una pierna por vez"]],
+  zancadaestatica:[["zancadas","Caminando, más recorrido"],["stepup","Subiendo al banco"]],
   jumpsquat:[["sentadillamanc","Sin salto, con peso"]],
   encogimientos:[["facepull","Misma zona de arriba de la espalda"]],
   elevaciones:[["plancha","Isométrico, sin equipo"],["crunchpolea","En polea, con peso"]],
@@ -905,8 +927,14 @@ function history(key){const out=[];for(const w of workouts()){const e=w.ex&&w.ex
 function lastBefore(key,date){const h=history(key).filter(x=>x.date<date);return h[h.length-1]||null}
 function lastWeight(key){const h=history(key);for(let i=h.length-1;i>=0;i--){const e=h[i].e;let best=null,bv=-1;(e.r||[]).forEach((r,j)=>{const w=setW(e,j);if(r!==""&&r!=null&&w){const v=num(w);if(v!==null&&v>bv){bv=v;best=w}}});if(best)return best}return null}
 const UNIT={banca:"lado",rumanobarra:"lado",pushdown:"placa",overhead:"placa",jalon:"placa",remo:"placa",pullover:"placa",facepull:"placa",cruce:"placa",latpolea:"placa",cuerda:"placa",jalon1:"placa",cruceinv:"placa",curlpolea:"placa",martillocuerda:"placa",crunchpolea:"placa"};
-const SINGLE=["goblet","remo1","concentrado","predicador","gemelo1"];
-const REST=k=>EX[k].rest||(["banca","goblet","rumano","zancadas","jalon","remo"].includes(k)?120:75);
+/* Ejercicios de UNA sola mancuerna: el campo dice "Kg" y no "Kg c/u".
+   El femoral entró acá en noviembre: la mancuerna va agarrada entre los dos
+   pies, es una sola, y el campo decía "Kg c/u" como si fueran dos. */
+const SINGLE=["goblet","remo1","concentrado","predicador","gemelo1","femoral"];
+/* Los compuestos pesados descansan 2 minutos; el resto, 75 segundos. El rumano
+   con barra y la sentadilla con mancuernas entraron a la lista al pasar a ser
+   los ejercicios principales de los dos días de pierna. */
+const REST=k=>EX[k].rest||(["banca","goblet","rumano","rumanobarra","sentadillamanc","zancadas","jalon","remo"].includes(k)?120:75);
 const unitLabel=k=>({lado:"Kg por lado",placa:"Placa"}[UNIT[k]]||(SINGLE.includes(k)?"Kg":"Kg c/u"));
 const unitShort=k=>({lado:" kg por lado",placa:""}[UNIT[k]]??(SINGLE.includes(k)?" kg":" kg c/u"));
 function advice(key,e,S,hasW){
@@ -1335,7 +1363,7 @@ function restoreBackup(text){
   return{nuevos,existentes};
 }
 function rutinaHTML(){
-  const groups=[["Lunes: empuje A",PUSH],["Martes: tirón A",PULL],["Miércoles: piernas y abdomen",LEGS],["Jueves: empuje B",PUSH_B],["Viernes: tirón B",PULL_B]];
+  const groups=[["Lunes: piernas A",PIERNAS_A],["Martes: empuje",EMPUJE],["Miércoles: tirón",TIRON],["Jueves: piernas B",PIERNAS_B],["Viernes: torso completo",TORSO]];
   const exHTML=([k,sets,sug])=>{const ex=EX[k],lw=lastWeight(k)||sug;
     return `<article><div class="figs"><svg viewBox="0 0 200 158">${draw(ex,0)}</svg><svg viewBox="0 0 200 158">${draw(ex,1)}</svg></div>
     <div><h3>${ex.name}</h3><p class="s">${sets}${lw?` · ${esc(lw)}`:""}</p><p><b>Clave:</b> ${ex.cue}</p><p><b>Posición:</b> ${ex.pos}</p><p><b>Movimiento:</b> ${ex.mov}</p><p class="bad"><b>Evitá:</b> ${ex.err}</p></div></article>`};
@@ -1347,7 +1375,7 @@ article{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:12px 0;bor
 .figs{display:flex;gap:4px}.figs svg{width:98px;height:78px}h3{margin:0;font-size:1.05rem}.s{color:var(--celeste);font-weight:700;margin:2px 0 6px}
 p{margin:4px 0;font-size:.9rem}.bad{color:var(--warn)}.intro{color:var(--muted)}
 @media(max-width:520px){article{grid-template-columns:1fr}}</style></head><body>
-<h1>Mi gym</h1><p class="intro">Cada ejercicio muestra la posición inicial y final. Bajada lenta (2 a 3 segundos), subida controlada (1 segundo). Descanso de 60 a 90 segundos entre series, hasta 2 minutos en press banca y piernas. Cardio en cinta inclinada 20 a 30 minutos lunes, jueves y viernes.</p>
+<h1>Mi gym</h1><p class="intro">Cada ejercicio muestra la posición inicial y final. Bajada lenta (2 a 3 segundos), subida controlada (1 segundo). Descanso de 60 a 90 segundos entre series, hasta 2 minutos en press banca y en los ejercicios principales de pierna. Nada de cinta: los 10.000 pasos diarios ya son el cardio de la semana.</p>
 ${groups.map(([t,l])=>`<h2>${t}</h2>${l.map(exHTML).join("")}`).join("")}
 </body></html>`;
 }
@@ -1359,7 +1387,7 @@ ${groups.map(([t,l])=>`<h2>${t}</h2>${l.map(exHTML).join("")}`).join("")}
    cambio todavía no bajó.
    ATENCIÓN: este número y el VERSION de sw.js van juntos. Si tocás
    index.html hay que subir los dos. */
-const APP_VER="9", APP_FECHA="2 nov 2026";
+const APP_VER="10", APP_FECHA="2 nov 2026";
 /* Un punto verde arriba del día = ese día ya lo entrenaste esta semana.
    Contesta "¿el martes ya lo hice?" sin entrar a mirar. */
 function marcarDiasHechos(){

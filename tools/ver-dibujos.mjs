@@ -18,7 +18,7 @@ const tajada = (desde, hasta) => {
   return html.slice(i, j);
 };
 const { EX, draw, pose } = new Function(
-  `${tajada("const EQ = {", "const PUSH=[")}
+  `${tajada("const EQ = {", "const PIERNAS_A=[")}
    ${tajada("const lerp=", "const HOLD=")}
    return {EX, draw, pose};`,
 )();
