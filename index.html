@@ -9,7 +9,13 @@
 <meta name="theme-color" content="#000000">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Mi gym">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- black-translucent y no default: con "default" iOS dibuja una barra de estado clara
+     arriba de todo, y sobre una app de fondo negro queda una franja blanca fea justo
+     al lado del Dynamic Island. Con esto el negro sigue hasta el borde y la hora y la
+     batería salen en blanco. Funciona porque :root lleva padding-top con
+     env(safe-area-inset-top), que es lo que impide que el contenido se meta abajo
+     del notch. Si alguna vez se saca ese padding, hay que volver a "default". -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="icon" href="icons/icon-192.png">
 <link href="fonts.css" rel="stylesheet">
