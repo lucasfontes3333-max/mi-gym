@@ -20,167 +20,265 @@
 <link rel="icon" href="icons/icon-192.png">
 <link href="fonts.css" rel="stylesheet">
 <style>
-/* Un solo tema, siempre oscuro: el modo claro se fue entero.
-   El fondo es negro de verdad (#000) y no gris oscuro, por tres motivos: es lo que
-   pidió Lucas, la pantalla del iPhone es OLED y el negro puro no gasta batería, y
-   en el gimnasio con luz fuerte las tarjetas se recortan mejor contra el negro.
-   Los acentos están bajados de saturación para que no griten sobre fondo negro. */
+/* ============================================================
+   Mi gym — hoja de estilo
+   Escrita para un iPhone sostenido con una mano, en un gimnasio
+   con luz fuerte, entre serie y serie. Todo lo demás es secundario.
+
+   Tres reglas que explican casi todas las decisiones de abajo:
+   1. Fondo negro de verdad (#000). La pantalla es OLED: el negro no
+      gasta batería, y con luz fuerte las tarjetas se recortan mejor.
+   2. Nada que se toque mide menos de 44 px. Con la mano transpirada
+      y apurado, un botón chico es un botón errado.
+   3. Los campos van en 16 px o más. Abajo de eso iOS hace zoom solo
+      al tocarlos y te descoloca la pantalla entera.
+   ============================================================ */
 :root{
-  /* Sobre negro puro una tarjeta gris oscuro casi no se despega del fondo, así que
-     --surface está más arriba de lo que parece y además las tarjetas llevan borde.
-     Medido: tarjeta contra fondo da 1.5 y todo el texto pasa 5:1. */
-  --bg:#000000; --surface:#171D24; --ink:#E7ECF1; --muted:#8A95A1;
-  --line:#2A323B; --equip:#49535D; --celeste:#4E9BDC; --plate:#C9963C; --done:#3DA876; --warn:#D1753F;
+  /* Sobre negro puro una tarjeta gris oscuro casi no se despega del
+     fondo, así que --surface está más arriba de lo que parece, lleva
+     un degradado muy suave y además borde. Medido contra el fondo da
+     poco contraste a propósito (la tarjeta no tiene que gritar), pero
+     todo el TEXTO de adentro pasa 5:1 contra su propia tarjeta. */
+  --bg:#000000;
+  --surface:#13191F;     /* tarjetas y paneles */
+  --surface2:#1B232B;    /* campos y huecos dentro de una tarjeta */
+  --ink:#EAF0F6;
+  --muted:#8E9AA6;
+  --line:#28313B;
+  --equip:#4C5661;       /* bancos, torres y poleas de los dibujos */
+  --celeste:#5AA9F0;     /* el acento: lo que falta hacer */
+  --plate:#E0A33F;       /* récords y ejercicios cambiados */
+  --done:#35C27E;        /* lo hecho */
+  --warn:#E8834A;
+  /* Una sola escala de redondeo para todo. Mezclar radios al azar es
+     lo que más hace que una pantalla parezca improvisada. */
+  --r1:10px; --r2:14px; --r3:20px;
   color-scheme:dark;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.45}
-.wrap{max-width:720px;margin:0 auto;padding:20px 16px 40px}
-h1,h2,.sets,nav button{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:800}
-header h1{font-size:clamp(2.4rem,9vw,3.6rem);line-height:.95;margin:8px 0 6px;letter-spacing:-.01em}
-header p{margin:0;color:var(--muted);max-width:52ch}
-.sync{font-size:.8rem;color:var(--muted);margin-top:6px}
-.start{margin-top:16px;background:var(--surface);border-radius:14px;padding:12px 14px;border:2px solid var(--plate)}
-.start summary{font-weight:600;cursor:pointer}
-.start ol{margin:8px 0 2px;padding-left:1.2em}
-.start li{margin:5px 0}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:16px -16px 0;padding:10px 16px;display:flex;gap:5px;border-bottom:1px solid var(--line)}
-nav button{flex:1;font-size:1.2rem;padding:6px 0 4px;border:2px solid var(--line);background:var(--surface);color:var(--muted);border-radius:10px;cursor:pointer;line-height:1.05;min-width:0}
-nav button small{display:block;font-family:"Barlow",sans-serif;font-weight:500;font-size:.66rem}
-nav button.prog{border-color:var(--celeste);color:var(--celeste)}
-/* La pestaña activa era un bloque blanco. Sobre fondo negro encandilaba, así que
-   ahora se marca con el celeste y un relleno apenas más claro que el fondo. */
-nav button[aria-selected="true"]{background:#16202A;color:var(--celeste);border-color:var(--celeste)}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{overflow-x:hidden;max-width:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.45;
+  -webkit-tap-highlight-color:transparent;overscroll-behavior-y:none;
+}
+main{min-width:0}
+b{font-weight:600}
+/* La condensada es para números y títulos: ocupa menos y se lee de
+   lejos, que es como mirás el teléfono apoyado en el piso. */
+h1,h2,h3,.sets,.stat b,nav button,#rest b,.badge,.count{font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.wrap{max-width:620px;margin:0 auto;padding:calc(10px + env(safe-area-inset-top,0px)) 16px calc(180px + env(safe-area-inset-bottom,0px))}
 button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--celeste);outline-offset:2px}
-.dayhead{margin:22px 0 12px}
-.dayhead h2{font-size:2rem;margin:0;line-height:1}
-.dayhead p{margin:4px 0 0;color:var(--muted)}
-.dayhead .alert{color:var(--warn);font-weight:500}
-.datebar{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:.9rem;font-weight:500}
-input[type=date],select,.field{font:inherit;font-size:.95rem;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
-.progress{height:6px;background:var(--line);border-radius:3px;margin-top:12px;overflow:hidden}
-.progress span{display:block;height:100%;background:var(--done);width:0;transition:width .3s}
-.list{display:flex;flex-direction:column;gap:10px}
-.ex{background:var(--surface);border-radius:14px;padding:10px 12px 12px 8px;border:1px solid var(--line);border-left:5px solid var(--celeste)}
-.ex.isdone{border-left-color:var(--done)}
-.top{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:start}
-.fig{display:flex;flex-direction:column;align-items:center}
-.ex svg{width:132px;height:104px;display:block}
-.phase{font-size:.78rem;font-weight:600;color:var(--celeste);text-align:center;min-height:2.2em;line-height:1.1;margin-top:2px}
-.view{font-size:.7rem;color:var(--muted)}
-.ex h3{margin:0;font-size:1.05rem;font-weight:600;line-height:1.2}
-.sets{font-size:1.35rem;color:var(--celeste);line-height:1.1;margin-top:2px}
+
+/* ---------- encabezado de la app ----------
+   Era un bloque enorme con el nombre gigante y un subtítulo. En el
+   gimnasio no necesitás que te recuerden cómo se llama la app: la
+   abriste vos. Queda en una línea y el día empieza arriba de todo. */
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px}
+/* El nombre no se parte nunca: cuando el aviso de respaldo es largo,
+   el que se achica y envuelve es el aviso, no el título. */
+header h1{flex:0 0 auto;white-space:nowrap;font-size:1.15rem;font-weight:800;margin:0;letter-spacing:.02em;color:var(--muted);text-transform:uppercase}
+.sync{flex:1 1 auto;min-width:0;font-size:.74rem;color:var(--muted);text-align:right;line-height:1.25}
+/* El aviso de "bajá un respaldo" es lo único de toda la app que grita,
+   y grita a propósito: es lo único que no se puede deshacer. */
+.sync.off{color:var(--warn);font-weight:600}
+
+/* ---------- cabecera del día ---------- */
+.dayhead{margin:0 0 14px}
+.dhtop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dayhead h2{font-size:1.9rem;font-weight:800;margin:0;line-height:1}
+.dayhead .focus{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.25}
+.dayhead input[type=date]{flex:0 0 auto;width:auto;min-height:44px;font-size:15px;padding:4px 8px}
+/* Barra de avance del día. Antes era una línea de 6 px que no se veía
+   contra el fondo; ahora lleva número al lado, que es el dato real. */
+.dhbar{display:flex;align-items:center;gap:10px;margin-top:12px}
+.progress{flex:1;height:8px;background:var(--surface2);border-radius:999px;overflow:hidden}
+.progress span{display:block;height:100%;width:0;border-radius:999px;background:var(--done);transition:width .35s ease}
+.count{font-size:1.05rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.count.full{color:var(--done)}
+/* La nota del día es un párrafo largo que se lee una vez y después
+   estorba todos los días siguientes. Va plegada. */
+.note{margin-top:10px;border:1px solid var(--line);border-radius:var(--r1);background:var(--surface);overflow:hidden}
+.note summary{cursor:pointer;padding:9px 12px;font-size:.86rem;font-weight:600;color:var(--celeste);min-height:40px;display:flex;align-items:center}
+.note[open] summary{border-bottom:1px solid var(--line)}
+.note p{margin:0;padding:10px 12px;font-size:.88rem;color:var(--muted)}
+.note p.alert{color:var(--warn)}
+
+/* ---------- tarjeta de ejercicio ---------- */
+.list{display:flex;flex-direction:column;gap:12px}
+.ex{
+  background:linear-gradient(180deg,#161D25 0%,#11171E 100%);
+  border:1px solid var(--line);border-radius:var(--r3);
+  padding:14px 12px 12px;
+}
+.ex.isdone{border-color:#23463A;background:linear-gradient(180deg,#121E1A 0%,#0E1714 100%)}
+.ex.swapped{border-color:#4A3A1E}
+.top{display:grid;grid-template-columns:116px 1fr;gap:12px;align-items:start}
+/* El dibujo vive en su propio recuadro. Suelto sobre la tarjeta
+   parecía un error de carga; con marco se lee como ilustración. */
+.fig{background:var(--surface2);border-radius:var(--r2);padding:6px 4px 4px;display:flex;flex-direction:column;align-items:center}
+.ex svg{width:104px;height:82px;display:block}
+.view{font-size:.66rem;color:var(--muted);line-height:1}
+.phase{font-size:.68rem;font-weight:600;color:var(--celeste);text-align:center;min-height:2.5em;line-height:1.18;margin-top:3px;text-wrap:balance}
+.ex.isdone .phase{color:var(--done)}
+.exmeta{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+/* El número de ejercicio contesta "¿cuánto me falta?" sin contar
+   tarjetas hacia abajo. */
+.badge{flex:0 0 auto;width:24px;height:24px;border-radius:999px;background:var(--surface2);color:var(--muted);
+  font-size:.95rem;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}
+.ex.isdone .badge{background:var(--done);color:#06120D}
+.sets{font-size:1.5rem;font-weight:800;color:var(--celeste);line-height:1}
 .ex.isdone .sets{color:var(--done)}
-.cue{margin:4px 0 6px;font-size:.9rem;color:var(--muted)}
-.swap{font:inherit;font-size:.82rem;font-weight:600;color:var(--celeste);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 11px;min-height:32px;cursor:pointer}
+.ex h3{margin:0;font-size:1.2rem;font-weight:700;line-height:1.15;letter-spacing:.005em}
+.cue{margin:5px 0 8px;font-size:.88rem;color:var(--muted);line-height:1.35}
+.swap{font:inherit;font-size:.82rem;font-weight:600;color:var(--celeste);background:var(--surface2);
+  border:1px solid var(--line);border-radius:999px;padding:0 15px;min-height:44px;cursor:pointer;touch-action:manipulation}
 .swap[aria-expanded="true"]{background:var(--bg)}
-.ex.swapped{border-left-color:var(--plate)}
 .ex.swapped .swap{color:var(--plate);border-color:var(--plate)}
-.alts{margin-top:8px;padding:8px;background:var(--bg);border-radius:10px;border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.alts{margin-top:10px;padding:10px;background:var(--bg);border-radius:var(--r2);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
 .alts[hidden]{display:none}
 .alts p{margin:0 0 2px;font-size:.8rem;color:var(--muted)}
-.alts button{font:inherit;font-size:.9rem;font-weight:500;text-align:left;min-height:44px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.alts button{font:inherit;font-size:.92rem;font-weight:500;text-align:left;min-height:48px;padding:8px 12px;
+  border-radius:var(--r1);border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .alts button[aria-current="true"]{border-color:var(--celeste);color:var(--celeste);font-weight:600}
 .alts button small{display:block;font-size:.78rem;color:var(--muted);font-weight:400}
-.sess{border-top:1px solid var(--line)}
-.sess summary{cursor:pointer;padding:9px 2px;font-size:.92rem;font-weight:600;min-height:44px;display:flex;align-items:center}
-.sess summary small{color:var(--muted);font-weight:400;margin-left:6px}
-.sess[open] summary{color:var(--celeste)}
-.log{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.88rem;font-weight:500}
-.log .wgt{width:84px}
-.reps{display:inline-flex;gap:5px;align-items:center}
-.reps input{width:40px;text-align:center;padding:6px 2px}
-.field{padding:6px 6px}
-.sethead{display:grid;grid-template-columns:22px 70px 14px 58px;gap:6px;margin-top:10px;font-size:.72rem;font-weight:600;color:var(--muted)}
-.setlist{display:flex;flex-direction:column;gap:5px;margin-top:3px}
-.setrow{display:grid;grid-template-columns:22px 70px 14px 58px auto;gap:6px;align-items:center;font-size:.88rem}
-.setrow .sn{font-weight:600;color:var(--muted);text-align:center}
-.setrow .x,.setrow .u{color:var(--muted);font-size:.8rem}
-.setrow .field{width:100%;text-align:center;padding:7px 4px}
+
+/* ---------- carga de series ----------
+   Acá es donde se gana o se pierde. Antes había que abrir el teclado
+   para cambiar un peso: tocar el campo, esperar el teclado, borrar,
+   escribir, cerrar. Ahora cada número tiene − y + al lado y el teclado
+   queda para los casos raros. El campo sigue siendo escribible. */
+.sethead{display:grid;grid-template-columns:18px 1fr 1fr 48px;gap:6px;margin-top:14px;
+  font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.sethead.now{grid-template-columns:18px 1fr 48px}
+.sethead span{text-align:center}
+.setlist{display:flex;flex-direction:column;gap:7px;margin-top:5px}
+.setrow{display:grid;grid-template-columns:18px 1fr 1fr 48px;gap:6px;align-items:center}
+.setrow.now{grid-template-columns:18px 1fr 48px}
+.setrow .sn{font-weight:700;color:var(--muted);text-align:center;font-size:.82rem}
+.stepper{display:grid;grid-template-columns:34px 1fr 34px;align-items:center;
+  background:var(--surface2);border:1px solid var(--line);border-radius:var(--r1);overflow:hidden;min-height:48px}
+.stepper:focus-within{border-color:var(--celeste)}
+.st{font:inherit;font-size:20px;font-weight:700;line-height:1;color:var(--muted);background:none;border:0;
+  height:46px;cursor:pointer;touch-action:manipulation;padding:0}
+.st:active{background:rgba(255,255,255,.08);color:var(--ink)}
+.stepper .field{width:100%;min-width:0;border:0;background:none;text-align:center;
+  font-size:18px;font-weight:700;padding:0;min-height:46px;color:var(--ink);border-radius:0}
+.stepper .field::placeholder{color:var(--muted);opacity:.5;font-weight:600}
+.ok{min-height:48px;border-radius:var(--r1);border:1px solid var(--line);background:var(--surface2);
+  color:var(--muted);font-weight:800;font-size:20px;touch-action:manipulation;cursor:pointer;padding:0}
+.ok.on{background:var(--done);border-color:var(--done);color:#06120D}
+.ok:active,nav button:active,.btn:active,.rep:active{transform:scale(.96)}
+/* Un toque y queda cargado todo el ejercicio igual que la última vez.
+   Es el camino rápido para el día que repetís sin cambios, que es la
+   mayoría de los días. */
+.rep{display:block;width:100%;margin-top:9px;min-height:44px;font:inherit;font-size:.9rem;font-weight:700;
+  color:var(--celeste);background:var(--surface2);border:1px dashed var(--line);border-radius:var(--r1);
+  cursor:pointer;touch-action:manipulation}
+.rep[hidden]{display:none}
+.last{margin-top:9px;font-size:.84rem;color:var(--muted);line-height:1.35}
+.last .up{color:var(--done);font-weight:600}
 .last .hold{color:var(--warn);font-weight:600}
 .pr{color:var(--plate);font-weight:700}
-.summary{margin-top:14px}
-.tips{margin:0;padding-left:1.1em}.tips li{margin:6px 0;font-size:.92rem}
-.tips li.up{color:var(--done);font-weight:600}.tips li.hold{color:var(--warn);font-weight:500}
-.sync.off{color:var(--warn);font-weight:500}
-.last{margin-top:6px;font-size:.85rem;color:var(--muted)}
-.last .up{color:var(--done);font-weight:600}
-details.tech{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
-details.tech summary{cursor:pointer;font-weight:600;font-size:.92rem}
-.tech dl{margin:8px 0 0}
-.tech dt{font-weight:600;font-size:.88rem;margin-top:8px}
-.tech dd{margin:2px 0 0;font-size:.9rem;color:var(--muted)}
+details.tech{margin-top:11px;border-top:1px solid var(--line);padding-top:9px}
+details.tech summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted);min-height:36px;display:flex;align-items:center}
+details.tech[open] summary{color:var(--celeste)}
+.tech dl{margin:6px 0 0}
+.tech dt{font-weight:700;font-size:.84rem;margin-top:9px;color:var(--ink)}
+.tech dd{margin:2px 0 0;font-size:.88rem;color:var(--muted)}
 .tech dd.bad{color:var(--warn)}
-.panel{background:var(--surface);border-radius:14px;padding:14px;margin-top:12px;border:1px solid var(--line)}
-.panel h3{margin:0 0 8px;font-size:1.1rem}
+
+/* ---------- paneles, resumen y progreso ---------- */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);padding:16px;margin-top:14px}
+.panel h3{margin:0 0 10px;font-size:1.25rem;font-weight:700}
 .panel .formrow{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
-.panel label.stack{display:flex;flex-direction:column;font-size:.8rem;font-weight:600;color:var(--muted);gap:3px}
-.panel .field{width:96px}
-.btn{font:inherit;font-weight:600;font-size:.92rem;padding:8px 14px;border-radius:8px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
-.btn.ghost{background:none;color:var(--ink)}
-.chart{width:100%;height:auto;display:block;margin-top:8px}
-.muted{color:var(--muted);font-size:.88rem}
-.tablewrap{overflow-x:auto;margin-top:10px}
-table{border-collapse:collapse;width:100%;font-size:.88rem}
-th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
-th{font-weight:600;color:var(--muted)}
+.panel label.stack{display:flex;flex-direction:column;font-size:.78rem;font-weight:700;color:var(--muted);gap:4px;text-transform:uppercase;letter-spacing:.03em}
+.panel .field{width:104px}
+.summary{margin-top:14px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.stat{background:var(--bg);border-radius:10px;padding:8px 10px;border:1px solid var(--line)}
-.stat b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:1.6rem;line-height:1}
-.stat span{font-size:.78rem;color:var(--muted)}
+.stat{background:var(--surface2);border-radius:var(--r2);padding:10px;border:1px solid var(--line);text-align:center}
+.stat b{display:block;font-size:1.9rem;font-weight:800;line-height:1;color:var(--ink)}
+.stat span{font-size:.74rem;color:var(--muted);line-height:1.2;display:block;margin-top:3px}
+input[type=date],select,.field{font:inherit;font-size:16px;min-height:48px;padding:8px 10px;
+  border:1px solid var(--line);border-radius:var(--r1);background:var(--surface2);color:var(--ink)}
+select{width:100%;max-width:100%;text-overflow:ellipsis}
+.btn{font:inherit;font-weight:700;font-size:.95rem;min-height:48px;padding:0 18px;border-radius:var(--r1);
+  border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;touch-action:manipulation}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
 .dl{display:flex;flex-wrap:wrap;gap:8px}
 .msg{font-size:.85rem;margin-top:8px;color:var(--muted);min-height:1.2em}
-.keys{margin-top:34px;padding-top:18px;border-top:2px solid var(--ink)}
-.keys h2{font-size:1.6rem;margin:0 0 8px}
+.muted{color:var(--muted);font-size:.88rem}
+.chart{width:100%;height:auto;display:block;margin-top:8px}
+.tablewrap{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:700;color:var(--muted)}
+.sess{border-top:1px solid var(--line)}
+.sess summary{cursor:pointer;padding:10px 2px;font-size:.92rem;font-weight:600;min-height:48px;display:flex;align-items:center;flex-wrap:wrap}
+.sess summary small{color:var(--muted);font-weight:400;margin-left:6px}
+.sess[open] summary{color:var(--celeste)}
+.tips{margin:0;padding-left:1.1em}
+.tips li{margin:7px 0;font-size:.92rem}
+.tips li.up{color:var(--done);font-weight:600}
+.tips li.hold{color:var(--warn);font-weight:500}
+.keys{margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+.keys h2{font-size:1.4rem;margin:0 0 8px}
 .keys ul{margin:0;padding-left:1.1em}
 .keys li{margin:6px 0}
-b{font-weight:600}
-/* ---- iPhone: barra abajo, campos de 16px (sin zoom), toques de 44px ---- */
-html{-webkit-text-size-adjust:100%}
-body{-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
-.wrap{padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(170px + env(safe-area-inset-bottom,0px))}
-header h1{font-size:2.4rem;margin:0}
-nav{position:fixed;left:0;right:0;bottom:0;top:auto;margin:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);border-bottom:0;
-  padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-right));gap:6px;
-  box-shadow:0 -4px 16px rgba(0,0,0,.06)}
-nav button{min-height:54px;font-size:1.15rem;border-radius:12px;touch-action:manipulation}
-nav button small{font-size:.62rem;white-space:nowrap}
-input,select,button{font-size:16px}
-select{width:100%;max-width:100%;text-overflow:ellipsis}
-html,body{overflow-x:hidden;max-width:100%}
-main{min-width:0}
-input[type=date],select,.field{font-size:16px;min-height:44px}
-.top{grid-template-columns:104px 1fr;gap:10px}
-.ex svg{width:104px;height:82px}
-.phase{font-size:.7rem}
-.ex{padding:12px 12px 12px 10px}
-.sethead,.setrow{grid-template-columns:22px 1fr 12px 1fr 48px}
-.sethead.now,.setrow.now{grid-template-columns:22px 1fr 48px}
-.sethead{margin-top:12px;font-size:.75rem}
-.setlist{gap:8px}
-.setrow .field{font-size:18px;font-weight:600;min-height:46px;border-radius:10px;padding:6px 4px;text-align:center}
-.setrow .field::placeholder{color:var(--muted);opacity:.55;font-weight:500}
-.ok{min-height:46px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--muted);font-weight:800;font-size:20px;touch-action:manipulation;cursor:pointer}
-.ok.on{background:var(--done);border-color:var(--done);color:#fff}
-.ok:active,nav button:active,.btn:active{transform:scale(.96)}
-.datebar input{flex:1}
-.panel{border-radius:16px}
-#rest{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:21;display:grid;grid-template-columns:1fr auto 52px 52px 44px;align-items:center;gap:8px;
-  background:var(--ink);color:var(--bg);border-radius:16px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.25);overflow:hidden;max-width:560px;margin:0 auto}
+/* Qué versión tenés puesta. Sirve para confirmar de un vistazo que un
+   cambio recién subido te llegó de verdad al teléfono. */
+.ver{margin:22px 0 0;text-align:center;font-size:.74rem;color:var(--muted);opacity:.8}
+
+/* ---------- barra de días, abajo ---------- */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:6px;
+  background:rgba(10,13,17,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-right))}
+nav button{flex:1;min-width:0;min-height:54px;font-size:1.15rem;font-weight:700;line-height:1.05;
+  border:1px solid transparent;background:none;color:var(--muted);border-radius:var(--r2);cursor:pointer;touch-action:manipulation}
+nav button small{display:block;font-family:"Barlow",sans-serif;font-weight:500;font-size:.62rem;white-space:nowrap;opacity:.85}
+nav button.prog{color:var(--celeste)}
+/* El día que estás mirando se marca con relleno, no con un bloque
+   blanco: sobre fondo negro el blanco encandila de noche. */
+nav button[aria-selected="true"]{background:#16222E;color:var(--celeste);border-color:#27485F}
+/* Un punto verde arriba del día significa "este día ya lo entrenaste". */
+nav button.hecho{position:relative}
+nav button.hecho::after{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  width:5px;height:5px;border-radius:999px;background:var(--done)}
+
+/* ---------- cronómetro de descanso ---------- */
+#rest{position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:21;
+  display:grid;grid-template-columns:1fr auto 52px 52px 44px;align-items:center;gap:8px;
+  background:var(--ink);color:#0A0E12;border-radius:var(--r3);padding:10px 12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);overflow:hidden;max-width:560px;margin:0 auto}
 #rest[hidden]{display:none}
-#rest .rinfo{display:flex;flex-direction:column;min-width:0;font-weight:600;font-size:.85rem;line-height:1.15}
+#rest .rinfo{display:flex;flex-direction:column;min-width:0;font-weight:700;font-size:.85rem;line-height:1.15}
 #rest .rinfo small{opacity:.7;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#rest b{font-family:"Barlow Condensed",sans-serif;font-size:2rem;font-variant-numeric:tabular-nums;min-width:3.2ch;text-align:right}
-#rest button{min-height:44px;border-radius:10px;border:0;background:rgba(255,255,255,.14);color:inherit;font-weight:700}
+#rest b{font-size:2.1rem;font-weight:800;font-variant-numeric:tabular-nums;min-width:3.2ch;text-align:right}
+#rest button{min-height:44px;border-radius:var(--r1);border:0;background:rgba(0,0,0,.12);color:inherit;font-weight:700;font:inherit;font-size:.95rem;cursor:pointer}
 #rest i{position:absolute;left:0;bottom:0;height:4px;background:var(--celeste);width:0}
 #rest.fin{background:var(--done)}
 #rest.fin i{background:#fff}
-@media (min-width:600px){nav{left:50%;right:auto;transform:translateX(-50%);width:600px;border-radius:16px 16px 0 0}}
-@media (max-width:380px){.top{grid-template-columns:104px 1fr}.ex svg{width:104px;height:82px}nav button{font-size:1.05rem}}
+
+@media (min-width:600px){
+  nav{left:50%;right:auto;transform:translateX(-50%);width:600px;border-radius:var(--r3) var(--r3) 0 0}
+}
+/* Pantallas angostas (iPhone mini o SE): el dibujo se achica para que
+   el nombre del ejercicio no quede cortado en tres renglones. */
+@media (max-width:370px){
+  .top{grid-template-columns:96px 1fr;gap:9px}
+  .ex svg{width:86px;height:68px}
+  .stepper{grid-template-columns:30px 1fr 30px}
+  nav button{font-size:1.02rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
@@ -189,9 +287,13 @@ input[type=date],select,.field{font-size:16px;min-height:44px}
     <h1>Mi gym</h1>
     <div class="sync" id="sync">Cargando tu registro…</div>
   </header>
+  <!-- El nombre de la app y el estado del respaldo van en una sola línea
+       arriba de todo. Antes el título ocupaba media pantalla y empujaba
+       el primer ejercicio abajo del borde. -->
 
   <nav role="tablist" id="tabs"></nav>
   <main id="day"></main>
+  <p class="ver" id="ver"></p>
   <div id="rest" hidden role="timer" aria-live="polite"><div class="rinfo"><span>Descanso</span><small id="rname"></small></div><b id="rt">1:30</b><button type="button" data-d="-15" aria-label="Restar 15 segundos">−15</button><button type="button" data-d="15" aria-label="Sumar 15 segundos">+15</button><button type="button" data-x aria-label="Cerrar descanso">✕</button><i id="rbar"></i></div>
 
 </div>
@@ -681,6 +783,11 @@ function draw(ex,t){
     if(ex.db.includes(2)&&P.w2)s+=mancuerna(P.w2,P.e2||P.n);
   }
   return s}
+/* La frase de la fase va abajo de un dibujo angosto y casi siempre entra
+   en dos renglones. Sin esto el salto de línea caía adentro del "(2 s)" y
+   dejaba un "s)" solo colgando en el segundo renglón. El espacio duro lo
+   mantiene pegado. */
+const faseTxt=s=>String(s).replace(/\((\d+(?:[.,]\d+)?)\s*s\)/g,"($1 s)");
 const HOLD=350;
 function state(ex,now){
   const d1=ex.ph[0][1],d2=ex.ph[1][1],tot=d1+d2+2*HOLD,l=now%tot;
@@ -716,6 +823,9 @@ function updSync(){
 }
 function saveDoc(id,obj){
   MEM[id]=clone(obj);persistLocal();updSync();
+  /* el punto verde de la barra de abajo se actualiza al toque, no
+     recién la próxima vez que abrís la app */
+  try{marcarDiasHechos()}catch(e){}
 }
 updSync();
 
@@ -835,14 +945,26 @@ function showDay(id){
   const d=DAYS.find(x=>x.id===id),docId="w_"+CUR_DATE+"_"+d.id;
   const doc=MEM[docId]?clone(MEM[docId]):{date:CUR_DATE,day:d.id,ex:{}};
   if(!doc.ex)doc.ex={};
-  dayEl.innerHTML=`<div class="dayhead"><h2>${d.name}: ${d.focus}</h2><p class="${d.alert?"alert":""}">${d.note}</p>
-    <label class="datebar">Fecha del entrenamiento <input type="date" id="fecha" value="${CUR_DATE}"></label>
-    <div class="progress"><span id="bar"></span></div></div><div class="list"></div>`;
+  /* La cabecera del día: nombre y músculos a la izquierda, fecha como
+     chip a la derecha, avance en una barra con el número al lado, y la
+     nota del día plegada. La nota se lee una vez y después estorba
+     todos los días siguientes, así que ya no ocupa tres renglones. */
+  dayEl.innerHTML=`<div class="dayhead">
+    <div class="dhtop">
+      <div><h2>${d.name}</h2><p class="focus">${d.focus}</p></div>
+      <input type="date" id="fecha" value="${CUR_DATE}" aria-label="Fecha del entrenamiento">
+    </div>
+    <div class="dhbar"><div class="progress"><span id="bar"></span></div><span class="count" id="count">0/${d.list.length}</span></div>
+    <details class="note"><summary>Cómo encarar el día</summary><p class="${d.alert?"alert":""}">${d.note}</p></details>
+  </div><div class="list"></div>`;
   dayEl.querySelector("#fecha").addEventListener("change",e=>{if(e.target.value){CUR_DATE=e.target.value;showDay(id)}});
   const list=dayEl.querySelector(".list");cards=[];
   const doneFlags=[],PRS=[];
   dayEl.insertAdjacentHTML("beforeend",`<section class="panel summary" id="resumen"></section>`);
-  const upd=()=>{const b=document.getElementById("bar");if(b)b.style.width=(doneFlags.filter(Boolean).length/d.list.length*100)+"%";
+  const upd=()=>{const hechos=doneFlags.filter(Boolean).length;
+    const b=document.getElementById("bar");if(b)b.style.width=(hechos/d.list.length*100)+"%";
+    const c=document.getElementById("count");
+    if(c){c.textContent=`${hechos}/${d.list.length}`;c.classList.toggle("full",hechos===d.list.length)}
     const today=MEM[docId]||{ex:{}};let sets=0,reps=0;
     for(const k in today.ex||{})(today.ex[k].r||[]).forEach(r=>{const v=num(r);if(v!==null){sets++;if(!/seg/.test(k))reps+=v}});
     const prs=PRS.filter(Boolean);
@@ -887,7 +1009,13 @@ function showDay(id){
     /* "arrancá con sin peso" no se puede leer: los ejercicios de peso corporal
        llevan su propia frase. */
     }else lastTxt=hasW?(/^sin peso$/i.test(String(sug||"").trim())?"Primera vez: es con tu propio peso, anotá solo las repeticiones.":`Primera vez: arrancá con ${esc(sug)}.`):"";
-    const rows=reps.map((v,j)=>`<div class="setrow${hasW?"":" now"}"><span class="sn">${j+1}</span>${hasW?`<input class="field sw" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" value="${esc(ws[j])}" aria-label="Peso serie ${j+1}"><span class="x">×</span>`:""}<input class="field rp" type="text" inputmode="numeric" pattern="[0-9]*" enterkeyhint="done" autocomplete="off" value="${esc(v)}" placeholder="${S.timed?"60":S.target}" aria-label="${S.timed?"Segundos":"Repeticiones"} serie ${j+1}"><button type="button" class="ok" aria-label="Serie ${j+1} hecha">✓</button></div>`).join("");
+    /* Cuánto suma o resta cada toque de + y −. El salto depende de con
+       qué estés cargando: en barra el disco más chico que hay cambia
+       1,25 kg de cada lado, en polea no existe media placa, y en
+       mancuernas el salto real del gimnasio es de a 1 kg. */
+    const STEP=UNIT[key]==="lado"?1.25:1;
+    const nice=n=>{const r=Math.round(n*100)/100;return String(r).replace(".",",")};
+    const rows=reps.map((v,j)=>`<div class="setrow${hasW?"":" now"}"><span class="sn">${j+1}</span>${hasW?`<div class="stepper"><button type="button" class="st" data-f="w" data-d="-1" aria-label="Bajar peso serie ${j+1}" tabindex="-1">−</button><input class="field sw" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" value="${esc(ws[j])}" aria-label="Peso serie ${j+1}"><button type="button" class="st" data-f="w" data-d="1" aria-label="Subir peso serie ${j+1}" tabindex="-1">+</button></div>`:""}<div class="stepper"><button type="button" class="st" data-f="r" data-d="-1" aria-label="Bajar repeticiones serie ${j+1}" tabindex="-1">−</button><input class="field rp" type="text" inputmode="numeric" pattern="[0-9]*" enterkeyhint="done" autocomplete="off" value="${esc(v)}" placeholder="${S.timed?"60":S.target}" aria-label="${S.timed?"Segundos":"Repeticiones"} serie ${j+1}"><button type="button" class="st" data-f="r" data-d="1" aria-label="Subir repeticiones serie ${j+1}" tabindex="-1">+</button></div><button type="button" class="ok" aria-label="Serie ${j+1} hecha">✓</button></div>`).join("");
     const el=document.createElement("article");
     const opciones=[...(puedeVolver?[[origKey,"El de la rutina"]]:[]),...alts];
     const hayCambio=opciones.length>1;
@@ -895,10 +1023,11 @@ function showDay(id){
     const altOpts=hayCambio?`<div class="alts" hidden><p>Si está ocupada la máquina:</p>
       ${opciones.map(([ak,why])=>`<button type="button" data-k="${ak}" aria-current="${key===ak?"true":"false"}">${esc(EX[ak].name)}<small>${esc(why)}</small></button>`).join("")}</div>`:"";
     el.innerHTML=`<div class="top"><div class="fig"><svg viewBox="0 0 200 158" role="img" aria-label="Animación de ${ex.name}"></svg>${ex.view?`<span class="view">${ex.view}</span>`:""}<div class="phase" aria-hidden="true"></div></div>
-      <div><h3>${ex.name}</h3><div class="sets">${sets}</div><p class="cue">${ex.cue}</p>${altBtn}</div></div>
+      <div><div class="exmeta"><span class="badge">${i+1}</span><span class="sets">${sets}</span></div><h3>${ex.name}</h3><p class="cue">${ex.cue}</p>${altBtn}</div></div>
       ${altOpts}
-      <div class="sethead${hasW?"":" now"}"><span></span>${hasW?`<span>${unitLabel(key)}</span><span></span>`:""}<span>${S.timed?"Segundos":"Reps"}</span><span></span></div>
+      <div class="sethead${hasW?"":" now"}"><span></span>${hasW?`<span>${unitLabel(key)}</span>`:""}<span>${S.timed?"Segundos":"Reps"}</span><span></span></div>
       <div class="setlist">${rows}</div>
+      <button type="button" class="rep" hidden></button>
       <div class="last">${lastTxt}<span class="pr" hidden> · Récord</span></div>
       <details class="tech"><summary>Técnica</summary><dl>
       <dt>Posición inicial</dt><dd>${ex.pos}</dd><dt>Movimiento</dt><dd>${ex.mov}</dd>
@@ -924,9 +1053,40 @@ function showDay(id){
       save();startRest(REST(key),ex.name);
       const nx=boxes[j+1];if(nx&&!nx.value.trim())nx.scrollIntoView({block:"nearest",behavior:"smooth"})}));
     /* si cambiás el peso de una serie, las siguientes que todavía no hiciste toman el mismo peso */
-    wbox.forEach((b,j)=>b.addEventListener("input",()=>{
-      for(let k=j+1;k<wbox.length;k++)if(boxes[k].value.trim()==="")wbox[k].value=b.value;
-      save()}));
+    const arrastrar=j=>{for(let k=j+1;k<wbox.length;k++)if(boxes[k].value.trim()==="")wbox[k].value=wbox[j].value};
+    wbox.forEach((b,j)=>b.addEventListener("input",()=>{arrastrar(j);save()}));
+    /* − y + al lado de cada número: cargar sin abrir el teclado.
+       Tocar el teclado con la mano transpirada, borrar y escribir era
+       el paso más molesto de toda la app. El campo igual se puede
+       escribir a mano para los casos raros. */
+    const filas=[...el.querySelectorAll(".setrow")];
+    el.querySelectorAll(".st").forEach(btn=>btn.addEventListener("click",()=>{
+      const j=filas.indexOf(btn.closest(".setrow"));
+      const esPeso=btn.dataset.f==="w",campo=esPeso?wbox[j]:boxes[j];
+      if(!campo)return;
+      /* Un campo de reps vacío muestra el objetivo en gris. El primer
+         toque lo deja en ese objetivo en vez de saltar a 1: casi
+         siempre es justo el número que vas a anotar. */
+      const vacio=campo.value.trim()==="";
+      const base=num(vacio?campo.placeholder:campo.value)??0;
+      const v=vacio?base:Math.max(0,Math.round((base+(+btn.dataset.d)*(esPeso?STEP:1))*100)/100);
+      campo.value=esPeso?nice(v):String(Math.round(v));
+      if(esPeso)arrastrar(j);
+      save();
+    }));
+    /* Un toque y queda cargado el ejercicio entero igual que la última
+       vez. La mayoría de los días repetís sin cambios, y en esos días
+       esto reemplaza ocho toques por uno. */
+    const repBtn=el.querySelector(".rep");
+    if(prev&&!filled(entry.r)){
+      repBtn.hidden=false;
+      repBtn.textContent="⟳ Repetir lo de la última vez";
+      repBtn.addEventListener("click",()=>{
+        boxes.forEach((b,j)=>{const r=(prev.e.r||[])[j];if(r!=null&&r!=="")b.value=String(r)});
+        if(hasW)wbox.forEach((b,j)=>{const w=clean(setW(prev.e,j));if(w)b.value=w});
+        repBtn.hidden=true;save();startRest(REST(key),ex.name);
+      });
+    }
     if(hayCambio){
       const sw=el.querySelector(".swap"),panel=el.querySelector(".alts");
       sw.addEventListener("click",()=>{
@@ -947,7 +1107,7 @@ function showDay(id){
     const svg=el.querySelector("svg"),ph=el.querySelector(".phase");
     const card={svg,ph,ex,last:-1,vis:false};cards.push(card);if(IO){svg.__card=card;IO.observe(svg)}else card.vis=true;
     svg.innerHTML=draw(ex,reduce?1:0);
-    if(reduce)ph.textContent=ex.ph[0][0]+" / "+ex.ph[1][0];
+    if(reduce)ph.textContent=faseTxt(ex.ph[0][0]+" / "+ex.ph[1][0]);
     list.appendChild(el);paint();
   });
 }
@@ -1142,17 +1302,40 @@ ${groups.map(([t,l])=>`<h2>${t}</h2>${l.map(exHTML).join("")}`).join("")}
 </body></html>`;
 }
 
+/* ---------- versión ----------
+   Sirve para una sola cosa, pero importante: confirmar de un vistazo
+   que un cambio recién subido llegó de verdad al teléfono, en vez de
+   confiar en que llegó. Si abrís la app y el número no cambió, el
+   cambio todavía no bajó.
+   ATENCIÓN: este número y el VERSION de sw.js van juntos. Si tocás
+   index.html hay que subir los dos. */
+const APP_VER="8", APP_FECHA="2 nov 2026";
+/* Un punto verde arriba del día = ese día ya lo entrenaste esta semana.
+   Contesta "¿el martes ya lo hice?" sin entrar a mirar. */
+function marcarDiasHechos(){
+  const hoy=new Date(CUR_DATE+"T12:00:00"),lun=new Date(hoy);
+  lun.setDate(hoy.getDate()-((hoy.getDay()+6)%7));
+  const hechos=new Set();
+  for(const w of workouts()){
+    const f=new Date(w.date+"T12:00:00"),dif=(f-lun)/86400000;
+    if(dif>=0&&dif<7&&Object.keys(w.ex||{}).some(k=>filled(w.ex[k].r)))hechos.add(w.day);
+  }
+  tabs.querySelectorAll("button[data-id]").forEach(b=>b.classList.toggle("hecho",hechos.has(b.dataset.id)));
+}
+
 /* ---------- arranque ---------- */
 DAYS.forEach(d=>{const b=document.createElement("button");b.type="button";b.setAttribute("role","tab");b.dataset.id=d.id;b.innerHTML=`${d.short}<small>${d.tag}</small>`;b.setAttribute("aria-label",`${d.name}, ${d.tag}`);b.addEventListener("click",()=>{safe(()=>showDay(d.id));window.scrollTo({top:0})});tabs.appendChild(b)});
 {const b=document.createElement("button");b.type="button";b.className="prog";b.setAttribute("role","tab");b.dataset.id="prog";b.innerHTML=`Prog.<small>Registro</small>`;b.setAttribute("aria-label","Progreso y registro");b.addEventListener("click",()=>{safe(showProgress);window.scrollTo({top:0})});tabs.appendChild(b)}
 const wd=new Date().getDay();
 function safe(fn){try{fn()}catch(e){dayEl.innerHTML=`<section class="panel"><h3>No se pudo mostrar esta pantalla</h3><p class="muted">Tocá otro día arriba o recargá la página. Si sigue pasando, contale a Claude este error: ${esc(e&&e.message||e)}</p></section>`}}
 applySeeds();
+document.getElementById("ver").textContent=`Versión ${APP_VER} · ${APP_FECHA}`;
 safe(()=>{if(wd>=1&&wd<=5)showDay(DAYS[wd-1].id);else showProgress()});
+safe(marcarDiasHechos);
 if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 if(!reduce){let lastT=0;(function tick(now){
   if(!document.hidden&&now-lastT>=33){lastT=now;
-    for(const c of cards){if(!c.vis)continue;try{const[t,p]=state(c.ex,now);c.svg.innerHTML=draw(c.ex,t);if(p!==c.last){c.ph.textContent=c.ex.ph[p][0];c.last=p}}catch(e){c.vis=false}}}
+    for(const c of cards){if(!c.vis)continue;try{const[t,p]=state(c.ex,now);c.svg.innerHTML=draw(c.ex,t);if(p!==c.last){c.ph.textContent=faseTxt(c.ex.ph[p][0]);c.last=p}}catch(e){c.vis=false}}}
   requestAnimationFrame(tick)})(performance.now())}
 </script>
 </body>
