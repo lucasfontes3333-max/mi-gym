@@ -423,7 +423,7 @@ remo:{name:"Remo en polea",hl:["ua1","torso"],cable:[[182,96,1]],equip:()=>EQ.to
   pos:"Polea a la altura del ombligo, pies firmes, rodillas flexionadas, espalda recta y brazos estirados.",
   mov:"Tirá hacia el ombligo llevando los codos atrás, pegados al cuerpo, y juntá los omóplatos. Volvé estirando los brazos sin encorvar la espalda.",
   err:"Balancear el torso para tirar, encorvar la espalda al volver o subir los hombros."},
-pullover:{name:"Pull over en polea alta (de pie)",plate:2,pre:["3×10","placa 5"],hl:["ua1","torso"],cable:[[182,14,1]],equip:()=>EQ.tower(190)+EQ.pulley(182,14),
+pullover:{name:"Pull over en polea alta (de pie)",pre:["3×10","placa 5"],plate:2,pre:["3×10","placa 5"],hl:["ua1","torso"],cable:[[182,14,1]],equip:()=>EQ.tower(190)+EQ.pulley(182,14),
   ph:[["Bajá la barra a los muslos (1 s)",1000],["Subí con brazos rectos (2 s)",2000]],
   A:{h:[110,46],n:[105,58],p:[90,97],k1:[100,123],a1:[95,150],e1:[126,42],w1:[148,28]},
   B:{h:[110,46],n:[105,58],p:[90,97],k1:[100,123],a1:[95,150],e1:[112,82],w1:[110,105]},
@@ -520,7 +520,7 @@ jalon1:{name:"Jalón a una mano en polea",pre:["3×12 por brazo","placa 3"],hl:[
   pos:"Arrodillado frente a la polea alta con el agarre de una mano, brazo estirado arriba y torso erguido.",
   mov:"Tirá llevando el codo hacia abajo y hacia la cintura, como si lo metieras en el bolsillo. Subí lento dejando que el brazo se estire del todo y el omóplato suba.",
   err:"Inclinarse hacia el costado, tirar con la mano en vez del codo o hacer medio recorrido."},
-cruceinv:{name:"Cruce inverso en polea",hl:["ua1","ua2"],cable:[[182,18,1],[18,18,2]],equip:()=>EQ.tower(12)+EQ.tower(188)+EQ.pulley(18,18)+EQ.pulley(182,18),
+cruceinv:{name:"Cruce inverso en polea",pre:["3×15","placa 1"],hl:["ua1","ua2"],cable:[[182,18,1],[18,18,2]],equip:()=>EQ.tower(12)+EQ.tower(188)+EQ.pulley(18,18)+EQ.pulley(182,18),
   ph:[["Abrí los brazos atrás (1 s)",1000],["Volvé cruzando (2 s)",2000]],
   A:{...FRONT,e1:[96,70],w1:[114,66],e2:[104,70],w2:[86,66]},B:{...FRONT,e1:[66,58],w1:[42,58],e2:[134,58],w2:[158,58]},
   cue:"Reemplaza al face pull: parte de atrás del hombro y postura. Poco peso.",
@@ -564,7 +564,7 @@ goblet:{name:"Sentadilla goblet",db:[1],grip:"vertical",hl:["th1"],
   pos:"Pies un poco más anchos que los hombros, puntas levemente hacia afuera. Mancuerna vertical pegada al pecho.",
   mov:"Bajá llevando la cadera atrás y abajo, con las rodillas en la dirección de las puntas de los pies, hasta que los codos casi toquen las rodillas. Subí empujando el piso con todo el pie.",
   err:"Rodillas hacia adentro, levantar los talones o redondear la espalda."},
-rumano:{name:"Peso muerto rumano con mancuernas",db:[1],hl:["th1"],pre:["3×10","10 kg c/u"],
+rumano:{name:"Peso muerto rumano con mancuernas",pre:["3×10","10 kg c/u"],db:[1],hl:["th1"],pre:["3×10","10 kg c/u"],
   ph:[["Cadera atrás, espalda recta (2 s)",2000],["Empujá la cadera adelante (1 s)",1000]],
   A:{...STAND,e1:[101,75],w1:[102,97]},B:{h:[137,80],n:[127,86],p:[86,98],k1:[96,124],a1:[100,150],e1:[127,108],w1:[127,128]},
   cue:"Es una bisagra de cadera, no una sentadilla.",
@@ -637,7 +637,7 @@ jumpsquat:{name:"Sentadilla con salto",pre:["3×4","sin peso"],hl:["th1"],rest:1
   pos:"De pie, pies al ancho de los hombros, sin peso.",
   mov:"Bajá a media sentadilla llevando los brazos atrás y saltá lo más alto que puedas estirando todo el cuerpo. Aterrizá con la punta del pie primero y amortiguá doblando las rodillas, sin rebotar para el próximo salto.",
   err:"Aterrizar con la pierna rígida, bajar demasiado antes de saltar o rebotar sin control."},
-encogimientos:{name:"Encogimientos de hombros",db:[1],rest:60,
+encogimientos:{name:"Encogimientos de hombros",pre:["3×12","12 kg c/u"],db:[1],rest:60,
   ph:[["Subí los hombros a las orejas (1 s)",1000],["Bajá lento (2 s)",1800]],
   /* De perfil el brazo tapa el torso y el encogimiento no se ve. Por eso s1 y s2
      son dos puntos separados (barra de hombros visible) y el brazo cuelga un poco
@@ -649,21 +649,6 @@ encogimientos:{name:"Encogimientos de hombros",db:[1],rest:60,
   pos:"De pie con una mancuerna en cada mano, brazos colgando a los costados y estirados.",
   mov:"Subí los hombros hacia las orejas lo más alto que puedas y sostené un segundo arriba. Bajá lento hasta sentir que los hombros se estiran para abajo.",
   err:"Doblar los codos para ayudarte o girar los hombros en círculos."},
-/* Reemplaza a la máquina de curl femoral, que el gimnasio no tiene. Es el único
-   ejercicio del plan que dobla la rodilla contra resistencia, que era el agujero
-   que dejó el nórdico al salir. La mancuerna va agarrada entre los pies, así que
-   no la puedo dibujar: el dibujante solo pone mancuernas en las manos. Por eso el
-   cue aclara dónde va. Arranca liviano porque agarrarla con los pies es incómodo. */
-femoral:{name:"Curl femoral acostado con mancuerna",hl:["th1"],rest:75,
-  equip:()=>EQ.bench(30,130,118),
-  ph:[["Llevá los talones a la cola (1 s)",1100],["Bajá lento (2 s)",2000]],
-  A:{h:[40,112],n:[52,112],p:[96,112],k1:[128,112],a1:[162,112],e1:[46,128],w1:[58,138]},
-  B:{a1:[118,79]},
-  cue:"La mancuerna va agarrada entre los pies. La cadera no se despega del banco.",
-  pos:"Boca abajo en el banco plano, con las rodillas justo en el borde y las piernas estiradas. Una mancuerna parada entre los pies, agarrada con los empeines. Las manos agarran el banco a los costados.",
-  mov:"Doblá las rodillas llevando los talones hacia la cola todo lo que puedas, sin que la cadera se levante del banco. Bajá lento hasta estirar las piernas, sin dejar caer el peso.",
-  err:"Levantar la cola para ayudarte con el impulso, o bajar de golpe soltando la tensión.",
-  resp:"Soltá el aire al subir los talones y tomá aire al bajar."},
 elevaciones:{name:"Elevaciones de piernas",hl:["th1"],pre:["3×20",""],
   ph:[["Subí las piernas (1 s)",1200],["Bajá sin tocar el piso (2 s)",2000]],
   A:{h:[160,138],n:[148,142],p:[100,142],k1:[75,142],a1:[50,140],e1:[128,146],w1:[108,147]},
@@ -689,53 +674,71 @@ plancha:{name:"Plancha de abdomen",pre:["2×45 seg",""],hl:["torso"],
    sea siempre la misma y los rangos tipo "15-25" le parecían un montón de reps.
    Donde subir de peso es un salto enorme (polea de placa 1 a placa 2 es el doble)
    igual se progresa igual: primero se suman repeticiones de más al número fijo y
-   recién cuando salen todas limpias se sube la placa.
-   Los cinco días quedan en 20 series exactas. Verificable con tools/volumen.mjs. */
+   recién cuando salen todas limpias se sube la placa. */
 
-/* ===== Por qué esta rutina y no la anterior (noviembre 2026) =====
-   Hasta octubre Lucas jugaba al fútbol, y por eso el plan tenía UN día de piernas:
-   la cancha ya le daba el estímulo y el gimnasio solo tenía que no estorbar. Eso
-   estaba escrito tal cual en los objetivos de tools/volumen.mjs ("piernas en
-   mantenimiento mientras juegue al fútbol").
-   Se terminó el fútbol y ese razonamiento se venció: quedaron unas piernas en
-   mantenimiento sin nada que las mantuviera, mientras todo el tren superior
-   seguía entrenándose dos veces por semana.
-   Arreglarlo metiendo más series el miércoles no servía: ese día ya estaba en 20
-   series, que es el techo de una sesión de dos horas. Las piernas necesitaban un
-   segundo día, así que la semana pasó de 4 torso + 1 pierna a 3 torso + 2 pierna.
-   Lunes y jueves están separados por tres días a propósito: es la distancia justa
-   para entrenar la pierna dos veces sin llegar dolorido a la segunda.
-   Lo que se paga: el torso baja de 91,5 a 86,5 series fraccionales (un 5%) y
-   varios grupos quedan en el piso de su rango en vez de en el medio. Es una
-   decisión tomada a conciencia, no un descuido: la pierna es la masa muscular más
-   grande y es la que más mueve la aguja en una recomposición. */
+/* ===== Cómo está armada esta rutina (noviembre 2026) =====
 
-/* Lunes, pierna de rodilla: la sentadilla primero, con la pierna fresca. El curl
-   femoral y los gemelos cierran. */
-const PIERNAS_A=[["goblet","4×8","12 kg"],["stepup","3×6 por pierna","8 kg c/u"],["zancadas","3×10 por pierna","6 kg c/u"],["rumano","3×10","10 kg c/u"],["femoral","3×12","6 kg"],["gemelos","4×15","10 kg c/u"]];
-/* Martes, empuje. El cruce de poleas se mudó acá desde el jueves viejo: con tres
-   días de torso, el pecho tiene que entrar entero en dos de ellos. */
-const EMPUJE=[["banca","4×8","15 kg por lado"],["inclinado","3×8","10 kg c/u"],["cruce","3×12","placa 2"],["laterales","4×12","5 kg c/u"],["pushdown","3×10","placa 4"],["frances","3×10","5 kg c/u"]];
-/* Miércoles, tirón. Lleva los encogimientos porque el trapecio se quedaba sin día
-   al desaparecer el viernes de tirón. */
-const TIRON=[["jalon","4×10","placa 6"],["remo","4×10","placa 9"],["pullover","3×10","placa 5"],["facepull","3×15","placa 2"],["martillo","3×10","7 kg c/u"],["encogimientos","3×12","12 kg c/u"]];
-/* Jueves, pierna de cadera. El rumano con barra se lleva 5 series: los isquios
-   desde la cadera eran el agujero más grande de la semana vieja (tenían 5 y ahora
-   tienen 8) y son el músculo que más se lesiona corriendo. */
-const PIERNAS_B=[["rumanobarra","5×8","10 kg por lado"],["sentadillamanc","3×10","12 kg c/u"],["zancadaestatica","2×10 por pierna","6 kg c/u"],["femoral","2×12","6 kg"],["gemelo1","4×15","10 kg"],["elevaciones","4×12",""]];
-/* Viernes, repaso del torso: cubre lo que quedó corto entre martes y miércoles.
-   Es el único día con siete ejercicios porque tiene que tocar pecho, espalda,
-   las tres cabezas del hombro y bíceps sin pasarse de 20 series. */
-const TORSO=[["pressplano","3×10","10 kg c/u"],["remo1","3×10 por brazo","12 kg"],["hombro","2×10","9 kg c/u"],["laterales","3×12","5 kg c/u"],["latpolea","4×12 por brazo","placa 1"],["cruceinv","3×15","placa 1"],["curlpolea","2×12","placa 3"]];
+   LOS DÍAS SE AGRUPAN POR MOVIMIENTO, NO POR MÚSCULO.
+   Empuje es todo lo que alejás del cuerpo (pecho, hombro, tríceps) y tirón todo
+   lo que traés hacia vos (espalda, bíceps). Por eso las elevaciones laterales
+   caen el martes con el pecho: el hombro de adelante empuja junto con el pecho en
+   cada press, así que entrenarlos el mismo día los cansa y los descansa juntos.
+   Lucas preguntó justo por esto, así que la nota del martes ahora lo explica.
+
+   DOS DÍAS DE PIERNA, LUNES Y JUEVES.
+   Hasta octubre de 2026 jugaba al fútbol y la rutina tenía UN día de pierna a
+   propósito: la cancha daba el estímulo. Se terminó el fútbol, ese razonamiento se
+   venció, y la semana pasó a 2 pierna + 3 torso, separados por tres días.
+
+   BRAZO DIRECTO EN LOS CINCO DÍAS.
+   Esto salió de un error mío. El conteo fraccional de tools/volumen.mjs le sumaba
+   media serie al bíceps por cada jalón y cada remo, así que el bíceps "daba" 11,5
+   y parecía cubierto — pero las series DIRECTAS de brazo eran 5 de bíceps y 6 de
+   tríceps en toda la semana. Para alguien que se define como flaco de brazos, eso
+   es lo que se ve en el espejo, no el número fraccional. Ahora son 9 y 9.
+   El brazo va también en los dos días de pierna: son los días más cortos y el
+   bíceps no le compite en nada a la sentadilla, así que es volumen gratis.
+
+   ZONA MEDIA PENSADA PARA FÚTBOL, NO PARA "HACER ABDOMINALES".
+   Lucas avisó que puede haber pretemporada. Lo que sirve en la cancha es aguantar
+   el tronco firme cuando te empujan y cambiás de dirección (plancha) y tener
+   fuerza de flexor de cadera para esprintar y patear (elevaciones de piernas).
+   Ninguno necesita equipo, así que no dependen de que haya una máquina libre.
+
+   EL VOLUMEN ARRANCA ABAJO A PROPÓSITO.
+   La versión anterior tenía los cinco días clavados en 20 series, que es el techo
+   de una sesión de dos horas: 100 por semana para alguien que recién arranca. Eran
+   demasiadas y Lucas lo dijo. Ahora son 93, con los días entre 18 y 19, para tener
+   margen de sumar una serie por músculo cada 3 o 4 semanas.
+
+   QUÉ SE SACÓ Y POR QUÉ:
+   - El curl femoral acostado con mancuerna salió del archivo entero. Lo diseñé yo
+     para tapar la falta de máquina de femoral y Lucas lo probó: agarrar una
+     mancuerna entre los pies boca abajo es incómodo e impracticable. Con eso se
+     va el trabajo de isquio desde la RODILLA, que estaba ahí para prevenir
+     desgarros esprintando. Si vuelve la pretemporada hay que volver a mirarlo: el
+     rumano cubre el isquio desde la cadera, que es la función más grande, pero no
+     es lo mismo. Ver el comentario de "isquio rodilla" en tools/volumen.mjs.
+   - El rumano con mancuernas salió de la rutina: estaba el lunes mientras el de
+     barra estaba el jueves. Es el mismo ejercicio con distinto fierro, y encima la
+     alternativa del femoral ofrecía el de barra el mismo día que ya tenías el de
+     mancuernas. Queda solo el de barra, el jueves, que es el que le gusta.
+     Sigue disponible como alternativa si la barra está ocupada. */
+
+const PIERNAS_A=[["goblet","4×8","12 kg"],["stepup","3×6 por pierna","8 kg c/u"],["zancadas","3×10 por pierna","6 kg c/u"],["gemelos","3×15","10 kg c/u"],["curlinc","3×10","7 kg c/u"],["elevaciones","3×12",""]];
+const EMPUJE=[["banca","4×8","15 kg por lado"],["inclinado","3×8","10 kg c/u"],["cruce","3×12","placa 2"],["laterales","4×12","5 kg c/u"],["frances","3×10","5 kg c/u"],["plancha","2×45 seg",""]];
+const TIRON=[["jalon","4×10","placa 6"],["remo","4×10","placa 9"],["facepull","4×15","placa 2"],["martillo","3×10","7 kg c/u"],["curlpolea","3×12","placa 3"]];
+const PIERNAS_B=[["rumanobarra","6×8","10 kg por lado"],["sentadillamanc","3×10","12 kg c/u"],["zancadaestatica","3×10 por pierna","6 kg c/u"],["gemelo1","3×15","10 kg"],["pushdown","3×10","placa 4"]];
+const TORSO=[["pressplano","3×10","10 kg c/u"],["remo1","4×10 por brazo","12 kg"],["hombro","3×10","9 kg c/u"],["laterales","3×12","5 kg c/u"],["latpolea","3×12 por brazo","placa 1"],["cuerda","3×12","placa 3"]];
 const DAYS=[
 /* Nada de cinta en ningún día: Lucas camina 10.000 pasos todos los días y algunos
    más. Eso ya es el cardio de la semana y sumarle cinta solo le come tiempo y
    recuperación. Las notas lo dicen para que no quede la duda de si falta algo. */
- {id:"lun",short:"Lun",tag:"Piernas A",name:"Lunes",focus:"Cuádriceps, glúteo y gemelos",note:"Arrancá por la sentadilla, que es lo más pesado del día. Las piernas vuelven el jueves, así que hoy no hace falta dejar todo: terminá cada serie con una repetición en el tanque.",list:PIERNAS_A},
- {id:"mar",short:"Mar",tag:"Empuje",name:"Martes",focus:"Pecho, hombros y tríceps",note:"Todo tren superior, con la pierna descansando de ayer. La banca va primera porque es donde más peso movés.",list:EMPUJE},
- {id:"mie",short:"Mié",tag:"Tirón",name:"Miércoles",focus:"Espalda, bíceps y trapecio",note:"Día de tirar. En el jalón y el remo llevá el codo atrás y apretá la espalda al final del recorrido: si tirás solo con el brazo, trabaja el bíceps en vez de la espalda.",list:TIRON},
- {id:"jue",short:"Jue",tag:"Piernas B",name:"Jueves",focus:"Isquios, glúteo y abdomen",note:"El rumano es el ejercicio más importante de la semana para la parte de atrás de la pierna. Bajá hasta donde la espalda se mantenga derecha, no más: no se trata de llegar al piso.",list:PIERNAS_B},
- {id:"vie",short:"Vie",tag:"Torso",name:"Viernes",focus:"Pecho, espalda y hombros (repaso)",note:"Es el día de repaso: toca todo lo del torso una vez más, con menos peso y más repeticiones. Si llegás cansado de la semana, este es el día para aflojar.",list:TORSO}
+ {id:"lun",short:"Lun",tag:"Piernas A",name:"Lunes",focus:"Cuádriceps, gemelos, bíceps y abdomen",note:"Arrancá por la sentadilla, que es lo más pesado del día, con la pierna fresca. El curl y las elevaciones van al final a propósito: son lo liviano y no te sirve de nada gastarte en eso primero.",list:PIERNAS_A},
+ {id:"mar",short:"Mar",tag:"Empuje",name:"Martes",focus:"Pecho, hombros, tríceps y zona media",note:"Empuje es todo lo que alejás del cuerpo. El hombro entra acá porque en cada press empuja junto con el pecho: entrenarlos el mismo día los cansa y los descansa juntos, en vez de pegarle al hombro dos días seguidos sin querer.",list:EMPUJE},
+ {id:"mie",short:"Mié",tag:"Tirón",name:"Miércoles",focus:"Espalda y bíceps",note:"Tirón es todo lo que traés hacia vos. En el jalón y el remo llevá el codo atrás y apretá la espalda al final: si tirás solo con el brazo, trabaja el bíceps en vez de la espalda.",list:TIRON},
+ {id:"jue",short:"Jue",tag:"Piernas B",name:"Jueves",focus:"Isquios, glúteo y tríceps",note:"El rumano es el ejercicio más importante de la semana para la parte de atrás de la pierna, y es lo que te protege los isquios si volvés a esprintar. Bajá hasta donde la espalda se mantenga derecha, no más.",list:PIERNAS_B},
+ {id:"vie",short:"Vie",tag:"Torso",name:"Viernes",focus:"Pecho, espalda y hombros (repaso)",note:"Día de repaso: toca todo el torso una vez más, con menos peso y más repeticiones. Si llegás cansado de la semana, este es el día para aflojar.",list:TORSO}
 ];
 
 /* Alternativas: si la máquina está ocupada, con qué lo reemplazás.
@@ -777,12 +780,11 @@ const ALT={
   zancadas:[["zancadaestatica","Sin moverte del lugar, más estable"],["rumano","Más atrás de la pierna"]],
   gemelos:[["gemelo1","Una pierna por vez, más carga"]],
   gemelo1:[["gemelos","Las dos piernas juntas, más simple"]],
-  femoral:[["rumanobarra","Mismo músculo, desde la cadera"],["rumano","Con mancuernas, de pie"]],
   stepup:[["zancadaestatica","Sin impulso, más controlado"],["sentadillamanc","Las dos piernas a la vez"]],
   /* Los tres que entraron a la rutina en noviembre necesitaban su propia lista:
      sin esto el botón "Cambiar" no aparecía y te quedabas sin salida si la
      mancuerna o la barra estaban ocupadas. */
-  rumano:[["rumanobarra","Con barra, más peso total"],["femoral","Desde la rodilla, acostado"]],
+  rumano:[["rumanobarra","Con barra, más peso total"]],
   sentadillamanc:[["goblet","Una sola mancuerna, contra el pecho"],["zancadaestatica","Una pierna por vez"]],
   zancadaestatica:[["zancadas","Caminando, más recorrido"],["stepup","Subiendo al banco"]],
   jumpsquat:[["sentadillamanc","Sin salto, con peso"]],
@@ -916,7 +918,11 @@ const todayStr=()=>{const d=new Date();return d.getFullYear()+"-"+pad2(d.getMont
 const fmt=ds=>{const p=ds.split("-");return p[2]+"/"+p[1]};
 const num=v=>{const m=String(v??"").replace(",",".").match(/\d+(\.\d+)?/);return m?parseFloat(m[0]):null};
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function parseSets(s){const m=s.match(/^(\d+)×(\d+)/);return m?{n:+m[1],target:+m[2],timed:false}:{n:1,target:null,timed:true}}
+/* "4×8" son 4 series de 8 repeticiones. "2×45 seg" son 2 series de 45 SEGUNDOS,
+   y hay que distinguirlas: la plancha entró a la rutina en noviembre y el número
+   que anotás es tiempo, no repeticiones. Sin mirar el "seg" la app te ponía
+   "Reps" arriba del campo y te pedía 45 repeticiones de plancha. */
+function parseSets(s){const m=String(s).match(/^(\d+)×(\d+)/),seg=/\bseg/i.test(String(s));return m?{n:+m[1],target:+m[2],timed:seg}:{n:1,target:null,timed:true}}
 function workouts(){return Object.keys(MEM).filter(k=>k.startsWith("w_")).map(k=>MEM[k]).filter(w=>w&&typeof w.date==="string"&&w.ex&&typeof w.ex==="object").sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0)}
 const filled=r=>(r||[]).some(x=>x!==""&&x!=null);
 /* peso de cada serie (registros viejos solo tienen un peso para todas) */
@@ -927,10 +933,8 @@ function history(key){const out=[];for(const w of workouts()){const e=w.ex&&w.ex
 function lastBefore(key,date){const h=history(key).filter(x=>x.date<date);return h[h.length-1]||null}
 function lastWeight(key){const h=history(key);for(let i=h.length-1;i>=0;i--){const e=h[i].e;let best=null,bv=-1;(e.r||[]).forEach((r,j)=>{const w=setW(e,j);if(r!==""&&r!=null&&w){const v=num(w);if(v!==null&&v>bv){bv=v;best=w}}});if(best)return best}return null}
 const UNIT={banca:"lado",rumanobarra:"lado",pushdown:"placa",overhead:"placa",jalon:"placa",remo:"placa",pullover:"placa",facepull:"placa",cruce:"placa",latpolea:"placa",cuerda:"placa",jalon1:"placa",cruceinv:"placa",curlpolea:"placa",martillocuerda:"placa",crunchpolea:"placa"};
-/* Ejercicios de UNA sola mancuerna: el campo dice "Kg" y no "Kg c/u".
-   El femoral entró acá en noviembre: la mancuerna va agarrada entre los dos
-   pies, es una sola, y el campo decía "Kg c/u" como si fueran dos. */
-const SINGLE=["goblet","remo1","concentrado","predicador","gemelo1","femoral"];
+/* Ejercicios de UNA sola mancuerna: el campo dice "Kg" y no "Kg c/u". */
+const SINGLE=["goblet","remo1","concentrado","predicador","gemelo1"];
 /* Los compuestos pesados descansan 2 minutos; el resto, 75 segundos. El rumano
    con barra y la sentadilla con mancuernas entraron a la lista al pasar a ser
    los ejercicios principales de los dos días de pierna. */
@@ -1041,7 +1045,12 @@ function showDay(id){
       if(c.textContent!==txt){c.textContent=txt;c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")}
       c.classList.toggle("full",hechos===d.list.length)}
     const today=MEM[docId]||{ex:{}};let sets=0,reps=0;
-    for(const k in today.ex||{})(today.ex[k].r||[]).forEach(r=>{const v=num(r);if(v!==null){sets++;if(!/seg/.test(k))reps+=v}});
+    /* Los ejercicios por tiempo no suman al total de repeticiones del día: 45
+       segundos de plancha no son 45 repeticiones. Antes esto miraba el NOMBRE
+       del ejercicio buscando "seg", así que a la plancha no la agarraba y te
+       inflaba el resumen en 90 reps que nunca hiciste. */
+    for(const k in today.ex||{}){const porTiempo=setsOf(k)[0].timed;
+      (today.ex[k].r||[]).forEach(r=>{const v=num(r);if(v!==null){sets++;if(!porTiempo)reps+=v}})}
     const prs=PRS.filter(Boolean);
     const sm=document.getElementById("resumen");if(!sm)return;
     sm.innerHTML=sets?`<h3>Resumen de hoy</h3><div class="stats"><div class="stat"><b>${doneFlags.filter(Boolean).length}/${d.list.length}</b><span>ejercicios completos</span></div><div class="stat"><b>${sets}</b><span>series hechas</span></div><div class="stat"><b>${prs.length}</b><span>récords</span></div></div>${prs.length?`<p class="muted" style="margin:8px 0 0">Récord en ${prs.map(esc).join(", ")}.</p>`:""}`:`<p class="muted" style="margin:0">Cuando anotes tu primera serie, acá ves el resumen del día.</p>`};
@@ -1387,7 +1396,7 @@ ${groups.map(([t,l])=>`<h2>${t}</h2>${l.map(exHTML).join("")}`).join("")}
    cambio todavía no bajó.
    ATENCIÓN: este número y el VERSION de sw.js van juntos. Si tocás
    index.html hay que subir los dos. */
-const APP_VER="10", APP_FECHA="2 nov 2026";
+const APP_VER="11", APP_FECHA="2 nov 2026";
 /* Un punto verde arriba del día = ese día ya lo entrenaste esta semana.
    Contesta "¿el martes ya lo hice?" sin entrar a mirar. */
 function marcarDiasHechos(){

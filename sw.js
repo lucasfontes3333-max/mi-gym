@@ -1,7 +1,7 @@
 /* Service worker de Mi gym.
    Objetivo: que la app abra en el gimnasio sin señal, siempre.
    Subí el número de VERSION cada vez que cambies index.html. */
-const VERSION = "mi-gym-v10";
+const VERSION = "mi-gym-v11";
 
 const SHELL = [
   ".",

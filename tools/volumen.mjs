@@ -57,7 +57,6 @@ const M = {
   jumpsquat: { cuadriceps: 1 },
   rumano: { "isquio cadera": 1, gluteo: 0.5 },
   rumanobarra: { "isquio cadera": 1, gluteo: 0.5, aductores: 0.5 },
-  femoral: { "isquio rodilla": 1 },
   gemelos: { gemelos: 1 },
   gemelo1: { gemelos: 1 },
   encogimientos: { trapecio: 1 },
@@ -66,27 +65,36 @@ const M = {
   crunchpolea: { core: 1 },
 };
 
-/* Objetivos para Lucas, noviembre 2026: SIN fútbol.
-   Hasta octubre jugaba, y los rangos de pierna estaban deliberadamente bajos
-   ("piernas en mantenimiento mientras juegue al fútbol"): la cancha daba el
-   estímulo y el gimnasio solo tenía que no estorbar. Al terminar el fútbol ese
-   razonamiento se venció y quedaron unas piernas en mantenimiento sin nada que
-   las mantuviera, así que los cinco rangos de pierna subieron a valores de
-   crecimiento real. Los de torso quedaron igual.
-   Rangos de la meta-regresión de volumen.
-   Ojo: los números son fraccionales, así que los objetivos de bíceps y tríceps
-   son altos (10-14) aunque las series DIRECTAS sean solo 3 o 4: el resto se lo
-   comen los jalones y los press.
-   Con 3 días de torso en vez de 4, varios grupos de arriba quedan en el PISO de
-   su rango y no en el medio. Es a conciencia: es lo que cuesta darle dos días a
-   la pierna sin agregar un sexto día de gimnasio. Si alguno cae abajo del piso,
-   el script avisa y hay que sacarle series a otro lado. */
+/* Objetivos para Lucas, noviembre 2026. Dos cosas los mueven respecto de los
+   rangos genéricos, y las dos salieron de cosas que dijo él:
+
+   BRAZOS ARRIBA. Se define como flaco de brazos y los quiere como prioridad. Ojo
+   con el conteo fraccional: decía que el bíceps estaba en 11,5 y "cubierto",
+   pero eso contaba media serie por cada jalón y cada remo — las series DIRECTAS
+   de brazo eran 5. Lo que hace crecer el brazo es el trabajo directo, así que el
+   rango subió para dejar lugar a 9 directas de cada uno.
+
+   PIERNAS EN EL PISO DE LA ZONA DE CRECIMIENTO. Tienen dos días desde que se
+   terminó el fútbol, pero él pidió bajar el volumen total ("es mucho para
+   empezar de 0"), y entre pierna y torso prioriza torso. Nada queda por debajo
+   de mantenimiento.
+
+   El plan arranca a propósito en el piso de casi todos los rangos: hay margen
+   para sumar una serie por músculo cada 3 o 4 semanas. Si algo cae POR DEBAJO
+   del piso, el script avisa y hay que sacarle series a otro lado, no bajarle el
+   objetivo. */
 const OBJ = {
-  pecho: [12, 16], espalda: [14, 18], "delt lat": [12, 18], "delt post": [8, 12],
-  "delt ant": [6, 8], triceps: [10, 14], biceps: [10, 14], trapecio: [4, 6],
-  cuadriceps: [14, 18], "isquio cadera": [8, 12], "isquio rodilla": [4, 7],
-  gluteo: [8, 12], gemelos: [8, 12], aductores: [4, 10], core: [4, 6],
+  pecho: [12, 16], espalda: [12, 18], "delt lat": [10, 16], "delt post": [8, 12],
+  "delt ant": [6, 8], triceps: [12, 18], biceps: [12, 18], trapecio: [1, 6],
+  cuadriceps: [12, 16], "isquio cadera": [6, 10], "isquio rodilla": [0, 4],
+  gluteo: [6, 12], gemelos: [6, 10], aductores: [4, 10], core: [4, 8],
 };
+/* "isquio rodilla" tiene piso 0 y es la única excepción a la regla de arriba.
+   El curl nórdico y el Copenhagen los rechazó, la máquina no existe y el curl
+   femoral con mancuerna entre los pies lo probó y es impracticable. El rumano
+   cubre el isquio desde la CADERA, que es la función más grande, pero no desde
+   la rodilla. Mientras no corra está bien así; si arranca la pretemporada que
+   mencionó, esto vuelve a ser un agujero real y hay que buscarle algo. */
 /* "isquio rodilla" queda en rojo a propósito y no le bajo el objetivo: el nórdico
    era lo único que doblaba la rodilla contra resistencia y Lucas lo sacó. El rumano
    cubre el isquio desde la cadera, no desde la rodilla. Es un agujero real para
