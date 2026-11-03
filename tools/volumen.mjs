@@ -16,7 +16,7 @@ const lista = (n) => {
   return JSON.parse(html.slice(i + `const ${n}=`.length, j + 1).replace(/×/g, "x"));
 };
 
-const DIAS = { PIERNAS_A: "Lun", EMPUJE: "Mar", TIRON: "Mié", PIERNAS_B: "Jue", TORSO: "Vie" };
+const DIAS = { PIERNAS_1: "Lun", PECHO: "Mar", ESPALDA: "Mié", PIERNAS_2: "Jue", HOMBROS: "Vie" };
 
 /* Qué músculo trabaja cada ejercicio. Lo de 0,5 es carga indirecta real:
    el press carga tríceps aunque no sea un ejercicio de tríceps. */
@@ -84,9 +84,9 @@ const M = {
    del piso, el script avisa y hay que sacarle series a otro lado, no bajarle el
    objetivo. */
 const OBJ = {
-  pecho: [12, 16], espalda: [12, 18], "delt lat": [10, 16], "delt post": [8, 12],
+  pecho: [12, 16], espalda: [12, 18], "delt lat": [9, 16], "delt post": [8, 12],
   "delt ant": [6, 8], triceps: [12, 18], biceps: [12, 18], trapecio: [1, 6],
-  cuadriceps: [12, 16], "isquio cadera": [6, 10], "isquio rodilla": [0, 4],
+  cuadriceps: [12, 18], "isquio cadera": [6, 10], "isquio rodilla": [0, 4],
   gluteo: [6, 12], gemelos: [6, 10], aductores: [4, 10], core: [4, 8],
 };
 /* "isquio rodilla" tiene piso 0 y es la única excepción a la regla de arriba.
