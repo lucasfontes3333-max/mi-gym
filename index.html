@@ -581,10 +581,16 @@ zancadas:{name:"Zancadas caminando",db:[1],hl:["th1","th2"],
   pos:"De pie, mancuernas a los costados, torso erguido y mirada al frente.",
   mov:"Da un paso largo hacia adelante y bajá hasta que las dos rodillas queden a unos 90°. Empujá con el pie de adelante y avanzá con la otra pierna. Si te resulta incómodo, hacé subidas a un banco bajo, alternando piernas.",
   err:"Paso muy corto (la rodilla se va muy adelante), inclinar el torso o dejar que la rodilla de adelante se vaya hacia adentro."},
+/* El texto decía "apoyá la punta de los pies sobre un disco o escalón" y el dibujo
+   no tenía ningún escalón: el pie estaba plano en el piso y el talón no podía bajar
+   de ahí. Así se perdía la mitad del ejercicio, que es justamente el estiramiento
+   de abajo. Ahora hay escalón, el talón cae por debajo de él en la posición de
+   abajo y la punta queda fija arriba haciendo de bisagra. */
 gemelos:{name:"Gemelos de pie con mancuernas",db:[1],hl:["sh1"],
+  equip:()=>`<rect x="104" y="140" width="36" height="10" rx="2" fill="var(--equip)"/>`,
   ph:[["Subí en puntas de pie (1 s)",900],["Bajá lento (2 s)",1800]],
-  A:{h:[100,38],n:[100,50],p:[100,93],k1:[101,120],a1:[100,146],t1:[114,150],e1:[100,73],w1:[100,95]},
-  B:{h:[100,30],n:[100,42],p:[100,85],k1:[101,112],a1:[100,138],t1:[114,150],e1:[100,65],w1:[100,87]},
+  A:{h:[100,41],n:[100,53],p:[100,96],k1:[101,123],a1:[98,149],t1:[118,140],e1:[100,76],w1:[100,98]},
+  B:{h:[100,29],n:[100,41],p:[100,84],k1:[101,111],a1:[98,137],t1:[118,140],e1:[100,64],w1:[100,86]},
   cue:"Sostené un segundo arriba en cada repetición.",
   pos:"De pie con mancuernas a los costados. Si podés, apoyá la punta de los pies sobre un disco o escalón para bajar más.",
   mov:"Subí en puntas de pie lo más alto posible y sostené un segundo. Bajá lento hasta estirar.",
@@ -598,7 +604,16 @@ sentadillamanc:{name:"Sentadilla con mancuernas a los costados",db:[1],hl:["th1"
   err:"Inclinarte adelante para compensar el peso, rodillas hacia adentro o levantar los talones."},
 rumanobarra:{name:"Peso muerto rumano con barra",plate:1,hl:["th1"],pre:["3×10","10 kg por lado"],rest:120,
   ph:[["Cadera atrás, espalda recta (2 s)",2000],["Empujá la cadera adelante (1 s)",1000]],
-  A:{...STAND,e1:[101,75],w1:[102,99]},B:{h:[137,80],n:[127,86],p:[86,98],k1:[96,124],a1:[100,150],e1:[127,108],w1:[127,130]},
+  /* La cadera tenía que irse MUCHO más atrás. Antes viajaba 14 unidades y el
+     tronco bajaba hasta la horizontal, con lo cual el hombro quedaba tan adelante
+     que la barra —que cuelga a plomo del hombro— terminaba a 27 unidades de la
+     pierna. O sea: el dibujo mostraba justo el error que el texto dice evitar
+     ("alejar la barra del cuerpo") y no mostraba el gesto que el texto pide
+     ("llevá la cadera hacia atrás").
+     Ahora la cadera viaja 24 hacia atrás y el tronco baja a unos 35°, no a la
+     horizontal. Con eso el hombro queda sobre el pie y la barra cae rozando la
+     rodilla, que es como se ve de verdad. */
+  A:{...STAND,e1:[101,75],w1:[102,99]},B:{h:[120,66],n:[110,76],p:[76,100],k1:[96,124],a1:[100,150],e1:[110,98],w1:[107,124]},
   cue:"La barra roza las piernas todo el recorrido.",
   pos:"De pie, barra delante de los muslos con agarre al ancho de hombros, rodillas apenas flexionadas y fijas.",
   mov:"Llevá la cadera hacia atrás como si cerraras una puerta con la cola, con la barra rozando los muslos y las canillas, hasta media canilla o hasta sentir el estiramiento detrás del muslo. Volvé empujando la cadera hacia adelante.",
@@ -611,10 +626,13 @@ zancadaestatica:{name:"Zancada estática con mancuernas",db:[1],hl:["th1","th2"]
   pos:"Un pie adelante y el otro atrás, bien separados, torso erguido y mancuernas a los costados. El pie de atrás apoyado en la punta.",
   mov:"Bajá en el lugar hasta que la rodilla de atrás casi toque el piso y la de adelante quede a unos 90°. Subí empujando con el pie de adelante, sin juntar los pies. Terminás todas las repeticiones y recién después cambiás de pierna.",
   err:"Pies demasiado juntos (la rodilla de adelante se va muy adelante) o inclinar el torso."},
+/* Mismo arreglo que los gemelos de pie: sin escalón el talón no podía bajar del
+   piso y faltaba la mitad del recorrido. */
 gemelo1:{name:"Gemelos a una pierna",db:[1],hl:["sh1"],pre:["3×12 por pierna","10 kg"],
+  equip:()=>`<rect x="104" y="140" width="36" height="10" rx="2" fill="var(--equip)"/>`,
   ph:[["Subí en puntas de pie (1 s)",900],["Bajá lento (2 s)",1800]],
-  A:{h:[100,38],n:[100,50],p:[100,93],k1:[101,120],a1:[100,146],t1:[114,150],k2:[92,116],a2:[84,98],e1:[100,73],w1:[100,95]},
-  B:{h:[100,30],n:[100,42],p:[100,85],k1:[101,112],a1:[100,138],t1:[114,150],k2:[92,108],a2:[84,90],e1:[100,65],w1:[100,87]},
+  A:{h:[100,41],n:[100,53],p:[100,96],k1:[101,123],a1:[98,149],t1:[118,140],k2:[92,119],a2:[84,101],e1:[100,76],w1:[100,98]},
+  B:{h:[100,29],n:[100,41],p:[100,84],k1:[101,111],a1:[98,137],t1:[118,140],k2:[92,107],a2:[84,89],e1:[100,64],w1:[100,86]},
   cue:"Apoyate con la mano libre para no pelear con el equilibrio.",
   pos:"Parado sobre un pie, con una mancuerna en la mano del mismo lado y la otra mano apoyada en una máquina o pared. La otra pierna flexionada atrás.",
   mov:"Subí en puntas de pie lo más alto posible y sostené un segundo. Bajá lento hasta estirar. Después cambiás de pierna.",
@@ -1405,7 +1423,7 @@ ${groups.map(([t,l])=>`<h2>${t}</h2>${l.map(exHTML).join("")}`).join("")}
    cambio todavía no bajó.
    ATENCIÓN: este número y el VERSION de sw.js van juntos. Si tocás
    index.html hay que subir los dos. */
-const APP_VER="12", APP_FECHA="2 nov 2026";
+const APP_VER="13", APP_FECHA="2 nov 2026";
 /* Un punto verde arriba del día = ese día ya lo entrenaste esta semana.
    Contesta "¿el martes ya lo hice?" sin entrar a mirar. */
 function marcarDiasHechos(){
